@@ -157,7 +157,7 @@ Resources related to links in the API.
 + Request (application/json)
 
             {
-              "url": "http://knowledge.labcodes.com.br/",
+              "url": "http://knowledge.labcodes.com.br/"
             }
 
 + Response 201
