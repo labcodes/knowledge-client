@@ -147,3 +147,31 @@ Resources related to links in the API.
                     ]
                 }
             ]
+
+## Create Link [/links/create/]
+
+### Create a New Link without tags [POST]
+
++ url (string) - Url of the Link.
+
++ Request (application/json)
+
+            {
+              "url": "http://knowledge.labcodes.com.br/",
+            }
+
++ Response 201
+
+### Create a New Link with tags [POST]
+
++ url (string) - Url of the Link.
++ tags (string) - Tags of the Link.
+
++ Request (application/json)
+
+            {
+              "url": "http://knowledge.labcodes.com.br/",
+              "tags": "Classical music"
+            }
+
++ Response 201
