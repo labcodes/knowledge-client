@@ -175,3 +175,9 @@ Resources related to links in the API.
             }
 
 + Response 201
+
+## Logout [/accounts/logout/]
+
+### Logout from system [GET]
+
++ Response 200
