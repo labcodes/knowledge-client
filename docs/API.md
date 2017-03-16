@@ -181,3 +181,25 @@ Resources related to links in the API.
 ### Logout from system [GET]
 
 + Response 200
+
+## Login [/accounts/login/]
+
+### Login in the system [POST]
+
++ username (string) - email.
++ password (string) - password of the user.
+
++ Request (application/json)
+
+            {
+                "username": "renato@labcodes.com.br",
+                "password": "labcodes123"
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+              "token" : "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+            }
