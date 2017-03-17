@@ -148,8 +148,6 @@ Resources related to links in the API.
                 }
             ]
 
-## Create Link [/links/create/]
-
 ### Create a New Link without tags [POST]
 
 + url (string) - Url of the Link.
