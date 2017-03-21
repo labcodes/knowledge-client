@@ -11,7 +11,7 @@
               placeholder="email@provider.com"
               id="email"
               required
-              v-model="form.email">
+              v-model="form.username">
           </div>
         </fieldset>
 
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       form: {
-        email: '',
+        username: '',
         password: '',
       },
     };
@@ -57,12 +57,19 @@ export default {
     handleLogin() {
       this.$Progress.start();
 
-      Event.$emit('login', this.form);
+      if (typeof this.form.username === 'string' && typeof this.form.password === 'string') {
+        this.emitEvent();
+      }
+
       this.clearForm();
     },
 
+    emitEvent() {
+      Event.$emit('login', this.form);
+    },
+
     clearForm() {
-      this.form.email = '';
+      this.form.username = '';
       this.form.password = '';
     },
   },
