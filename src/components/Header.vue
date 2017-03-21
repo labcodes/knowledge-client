@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav">
+  <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
         Knowledge
