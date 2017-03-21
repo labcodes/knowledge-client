@@ -1,10 +1,6 @@
 <template>
   <section class="is-half is-offset-one-quarter">
     <div class="column">
-      <h1>Welcome to Knowledge</h1>
-    </div>
-
-    <div class="column">
       <form @submit.prevent="handleLogin">
         <fieldset class="field">
           <label for="email" class="label">E-mail</label>
