@@ -6,7 +6,26 @@ import Hello from '../components/Hello';
 import Login from '../components/Login';
 import Links from '../components/Links';
 
+// Services
+import LocalStorage from '../assets/js/Localstorage';
+
 Vue.use(Router);
+
+// ====
+
+const storage = new LocalStorage('userInfo');
+
+function validateRoute(next) {
+  const userInfo = storage.get();
+
+  if (!userInfo) {
+    next(false); // next({ path: '/' });
+  } else {
+    next(true);
+  }
+}
+
+// ====
 
 export default new Router({
   mode: 'history', // removes the # from URL
@@ -26,6 +45,9 @@ export default new Router({
       path: '/links',
       name: 'Links',
       component: Links,
+      beforeEnter: (to, from, next) => {
+        validateRoute(next);
+      },
     },
   ],
 });
