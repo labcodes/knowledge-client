@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <kn-header></kn-header>
+    <kn-header :logged="isLogged"></kn-header>
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +10,7 @@
   import knHeader from './components/Header';
 
   // Services
+  import Localstorage from './assets/js/Localstorage';
   import Event from './assets/js/Event';
   import Auth from './assets/js/Auth';
 
@@ -20,7 +21,21 @@
       knHeader,
     },
 
+    data() {
+      return {
+        isLogged: false,
+      };
+    },
+
     mounted() {
+      this.storage = new Localstorage('userInfo');
+
+      if (this.storage.get()) {
+        this.isLogged = true;
+      } else {
+        this.isLogged = false;
+      }
+
       Event.$on('login', this.handleLogin);
     },
 

@@ -44,6 +44,7 @@
       </router-link>
 
       <router-link
+        v-if="logged"
         class="nav-item"
         title="Links"
         to="/links"
@@ -57,6 +58,8 @@
 <script>
 export default {
   name: 'header',
+
+  props: ['logged'],
 
   data() {
     return {
