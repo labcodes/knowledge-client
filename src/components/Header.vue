@@ -16,7 +16,7 @@
 
     <span
       class="nav-toggle"
-      @click="toggleNavbar()"
+      @click="toggleNavbar"
       :class="{ 'is-active': isActive }">
       <span></span>
       <span></span>
@@ -73,4 +73,23 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+  %active {
+    background-color: #00D1B2;
+    border-color: transparent;
+    color: #FFFFFF;
+  }
+
+  .router-link-active {
+    @extend %active;
+  }
+
+  .nav-item {
+    transition: all, .25s, linear;
+    border-radius: 0 0 5px 5px;
+
+    &:hover {
+      @extend %active;
+    }
+  }
+</style>

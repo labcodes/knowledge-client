@@ -1,39 +1,40 @@
 <template>
-  <section class="container-fluid">
-    <div class="row justify-content-md-center">
+  <section class="is-half is-offset-one-quarter">
+    <div class="column">
       <h1>Welcome to Knowledge</h1>
     </div>
 
-    <div class="row justify-content-md-center">
+    <div class="column">
       <form @submit.prevent="handleLogin">
-        <fieldset class="form-group">
-          <label for="email">E-mail</label>
-          <input
-            type="email"
-            class="form-control"
-            placeholder="email@provider.com"
-            id="email"
-            required
-            v-model="form.email">
+        <fieldset class="field">
+          <label for="email" class="label">E-mail</label>
+          <div class="control">
+            <input
+              type="email"
+              class="input"
+              placeholder="email@provider.com"
+              id="email"
+              required
+              v-model="form.email">
+          </div>
         </fieldset>
 
-        <fieldset class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            placeholder="******"
-            id="password"
-            required
-            pattern=".{6,}"
-            title="6 characters minimum"
-            v-model="form.password">
+        <fieldset class="field">
+          <label for="password" class="label">Password</label>
+          <div class="control">
+            <input
+              type="password"
+              class="input"
+              placeholder="******"
+              id="password"
+              required
+              pattern=".{6,}"
+              title="6 characters minimum"
+              v-model="form.password">
+          </div>
         </fieldset>
 
-        <button
-          type="submit"
-          class="btn btn-primary">
-
+        <button type="submit" class="button is-primary">
           Login
         </button>
       </form>
@@ -64,21 +65,7 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+  fieldset {
+    border: none;
+  }
 </style>
