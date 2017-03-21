@@ -1,13 +1,11 @@
 import Vue from 'vue';
-import LocalStorage from './Localstorage';
+import Event from './Event';
 
 class Auth {
   constructor(data) {
     this.formData = data;
     this.apiUrl = 'http://localhost:3000/api';
     this.http = Vue.http;
-
-    this.storage = new LocalStorage('userInfo');
   }
 
   login() {
@@ -17,8 +15,7 @@ class Auth {
 
     this.http.post(this.url, { username, password })
       .then((response) => {
-        console.warn(response.body);
-        this.storage.set(response.body);
+        Event.$emit('user_logged', response.body);
       })
       .catch((err) => {
         console.error(err);

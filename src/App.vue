@@ -37,10 +37,12 @@
       }
 
       Event.$on('login', this.handleLogin);
+      Event.$on('user_logged', this.handleUserLogged);
     },
 
     beforeDestroy() {
       Event.$off('login');
+      Event.$off('user_logged');
     },
 
     methods: {
@@ -49,6 +51,13 @@
         this.auth.login();
 
         this.$Progress.finish();
+      },
+
+      handleUserLogged(data) {
+        console.warn('O usuário acabou de fazer login..', data);
+
+        this.storage.set(data);
+        this.isLogged = true;
       },
     },
   };

@@ -19,7 +19,7 @@ function validateRoute(next) {
   const userInfo = storage.get();
 
   if (!userInfo) {
-    next({ path: '/' });
+    // next({ path: '/' });
   } else {
     next(true);
   }
