@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <section class="container-fluid">
     <div class="row justify-content-md-center">
       <h1>Welcome to Knowledge</h1>
     </div>
@@ -38,8 +38,7 @@
         </button>
       </form>
     </div>
-
-  </div>
+  </section>
 </template>
 
 <script>
