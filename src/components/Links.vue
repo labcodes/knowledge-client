@@ -24,17 +24,21 @@
         </a>
       </kn-link-card>
     </div>
+
+    <kn-fab-button></kn-fab-button>
   </section>
 </template>
 
 <script>
 import knLinkCard from './LinkCard';
+import knFabButton from './FabButton';
 
 export default {
   name: 'links',
 
   components: {
     knLinkCard,
+    knFabButton,
   },
 
   data() {

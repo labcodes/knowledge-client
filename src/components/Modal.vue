@@ -1,0 +1,95 @@
+<template>
+  <div class="modal" :class="{ 'is-active': isActive }">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+      <div class="is-half is-offset-one-quarter">
+        <form @submit.prevent="addNewLink">
+          <fieldset class="field">
+            <label for="url" class="label">URL</label>
+            <input
+              id="url"
+              class="input"
+              type="url"
+              required
+              placeholder="Your URL here."
+              v-model="form.url">
+          </fieldset>
+
+          <fieldset class="field">
+            <label for="tags" class="label">Tags</label>
+            <input
+              class="input"
+              id="tags"
+              type="text"
+              required
+              placeholder="Tags here."
+              v-model="form.tags">
+          </fieldset>
+
+          <button type="submit" class="button is-primary">
+            Add link
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="modal-close"
+      @click.prevent="closeModal">
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'modal',
+
+  props: [
+    'active',
+  ],
+
+  computed: {
+    isActive() {
+      return this.$props.active;
+    },
+  },
+
+  data() {
+    return {
+      form: {
+        url: '',
+        tags: [],
+      },
+    };
+  },
+
+  methods: {
+    closeModal() {
+      this.active = false;
+      this.clearFields();
+    },
+
+    clearFields() {
+      this.form.url = '';
+      this.form.tags = '';
+    },
+
+    addNewLink() {
+      this.form.tags = this.form.tags.split(',');
+      console.warn(this.form);
+    },
+  },
+};
+</script>
+
+<style scoped>
+  fieldset {
+    border: none;
+  }
+
+  label {
+    color: #FFFFFF;
+  }
+</style>
