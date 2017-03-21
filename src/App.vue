@@ -6,15 +6,35 @@
 </template>
 
 <script>
-import knHeader from './components/Header';
+  // Components
+  import knHeader from './components/Header';
 
-export default {
-  name: 'app',
+  // Services
+  import Event from './assets/js/Event';
+  import Auth from './assets/js/Auth';
 
-  components: {
-    knHeader,
-  },
-};
+  export default {
+    name: 'app',
+
+    components: {
+      knHeader,
+    },
+
+    mounted() {
+      Event.$on('login', this.handleLogin);
+    },
+
+    beforeDestroy() {
+      Event.$off('login');
+    },
+
+    methods: {
+      handleLogin(data) {
+        this.auth = new Auth(data);
+        this.auth.login();
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

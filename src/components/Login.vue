@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+
 export default {
   name: 'login',
 
@@ -53,7 +55,13 @@ export default {
 
   methods: {
     handleLogin() {
-      console.warn(this.form);
+      Event.$emit('login', this.form);
+      this.clearForm();
+    },
+
+    clearForm() {
+      this.form.email = '';
+      this.form.password = '';
     },
   },
 
