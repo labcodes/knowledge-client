@@ -32,6 +32,8 @@
       handleLogin(data) {
         this.auth = new Auth(data);
         this.auth.login();
+
+        this.$Progress.finish();
       },
     },
   };

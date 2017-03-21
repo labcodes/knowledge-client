@@ -55,6 +55,8 @@ export default {
 
   methods: {
     handleLogin() {
+      this.$Progress.start();
+
       Event.$emit('login', this.form);
       this.clearForm();
     },
