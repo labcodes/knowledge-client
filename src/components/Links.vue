@@ -6,6 +6,10 @@
           {{link.title}}
         </h1>
 
+        <small slot="card-date">
+          {{link.published_at}}
+        </small>
+
         <p slot="card-description">
           {{link.description}}
         </p>
@@ -13,11 +17,10 @@
         <a
           slot="card-tags"
           v-for="tag in link.tags"
-          class="card-footer-item"
           target="_blank"
           :href="tag.url">
 
-          {{tag.name}}
+          #{{tag.name}}
         </a>
       </kn-link-card>
     </div>
@@ -44,6 +47,8 @@ export default {
     this.linksArray.push({
       title: 'Aqui vem um título',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, itaque',
+      author: 'Alessandro Henrique',
+      published_at: '2014-11-11T08:40:51.620Z',
       tags: [
         {
           name: 'Labcodes',
