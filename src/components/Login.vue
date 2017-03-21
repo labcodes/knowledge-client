@@ -55,8 +55,6 @@ export default {
 
   methods: {
     handleLogin() {
-      this.$Progress.start();
-
       if (typeof this.form.username === 'string' && typeof this.form.password === 'string') {
         this.emitEvent();
       }

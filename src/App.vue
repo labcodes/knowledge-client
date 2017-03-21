@@ -47,10 +47,10 @@
 
     methods: {
       handleLogin(data) {
+        this.$Progress.start();
+
         this.auth = new Auth(data);
         this.auth.login();
-
-        this.$Progress.finish();
       },
 
       handleUserLogged(data) {
@@ -58,6 +58,8 @@
 
         this.storage.set(data);
         this.isLogged = true;
+
+        this.$Progress.finish();
       },
     },
   };
