@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
   .fab-button {
-    position: absolute;
+    position: fixed;
     bottom: 2%;
     right: 2%;
     border-radius: 100%;

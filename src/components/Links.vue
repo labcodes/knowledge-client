@@ -1,6 +1,6 @@
 <template>
-  <section class="section">
-    <div v-for="link in linksArray">
+  <section class="section columns">
+    <div v-for="link in linksArray" class="column is-3">
       <kn-link-card>
         <h1 slot="card-title">
           {{link.title}}
@@ -11,7 +11,7 @@
         </small>
 
         <p slot="card-description">
-          {{link.description}}
+          {{link.url}}
         </p>
 
         <a
@@ -33,6 +33,9 @@
 import knLinkCard from './LinkCard';
 import knFabButton from './FabButton';
 
+import ApiService from '../assets/js/ApiService';
+import Event from '../assets/js/Event';
+
 export default {
   name: 'links',
 
@@ -48,24 +51,23 @@ export default {
   },
 
   mounted() {
-    this.linksArray.push({
-      title: 'Aqui vem um título',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, itaque',
-      author: 'Alessandro Henrique',
-      published_at: '2014-11-11T08:40:51.620Z',
-      tags: [
-        {
-          name: 'Labcodes',
-          url: 'google.com.br',
-        },
-        {
-          name: 'Python',
-          url: 'google.com.br',
-        },
-      ],
-    });
+    this.api = new ApiService();
+    this.api.getLinks();
+
+    Event.$on('links_list', this.handleList);
   },
 
+  beforeDestroy() {
+    Event.$off('links_list');
+  },
+
+  methods: {
+    handleList(array) {
+      array.forEach((item) => {
+        this.linksArray.push(item);
+      });
+    },
+  },
 };
 </script>
 
