@@ -1,7 +1,7 @@
 <template>
   <section class="section columns">
     <div v-for="link in linksArray" class="column is-3">
-      <kn-link-card>
+      <kn-link-card :card="link">
         <h1 slot="card-title">
           {{link.title}}
         </h1>
