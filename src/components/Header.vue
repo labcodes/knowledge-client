@@ -59,7 +59,12 @@
 export default {
   name: 'header',
 
-  props: ['logged'],
+  props: {
+    logged: {
+      type: Boolean,
+      required: true,
+    },
+  },
 
   data() {
     return {
