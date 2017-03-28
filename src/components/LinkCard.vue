@@ -31,7 +31,7 @@
       <a
         title="Click to share with Facebook."
         class="card-footer-item"
-        @click="shareFacebook">
+        :href="fbLink" target="_blank">
 
         <span class="icon">
           <i class="fa fa-facebook"></i>
@@ -41,7 +41,7 @@
       <a
         title="Click to share with Twitter."
         class="card-footer-item"
-        @click="shareTwitter">
+        :href="twLink" target="_blank">
 
         <span class="icon">
           <i class="fa fa-twitter"></i>
@@ -55,8 +55,17 @@
 export default {
   name: 'link-card',
 
+  props: {
+    card: {
+      type: Object,
+      required: true,
+    },
+  },
+
   data() {
     return {
+      fbLink: this.shareFacebook(),
+      twLink: this.shareTwitter(),
     };
   },
 
@@ -66,11 +75,27 @@ export default {
     },
 
     shareFacebook() {
-      console.warn('Facebook.');
+      const obj = this.makeUrl();
+      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${obj.postUrl}`;
+
+      return shareUrl;
     },
 
     shareTwitter() {
-      console.warn('Twitter.');
+      const obj = this.makeUrl();
+      const shareUrl = `https://twitter.com/intent/tweet?text=${obj.title} ${obj.postUrl}`;
+
+      return shareUrl;
+    },
+
+    makeUrl() {
+      const title = this.card.title.replace(/\s/g, '-');
+      const postUrl = this.card.url;
+
+      return {
+        title,
+        postUrl,
+      };
     },
   },
 };

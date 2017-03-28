@@ -92,12 +92,14 @@ export default {
     @extend %active;
   }
 
-  .nav-item {
-    transition: all, .25s, linear;
-    border-radius: 0 0 5px 5px;
+  .nav-right {
+    .nav-item {
+      transition: all, .25s, linear;
+      border-radius: 0 0 5px 5px;
 
-    &:hover {
-      @extend %active;
+      &:hover {
+        @extend %active;
+      }
     }
   }
 </style>
