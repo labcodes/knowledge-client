@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueProgressBar from 'vue-progressbar';
-import VueResource from 'vue-resource';
+import axios from 'axios';
 
 import App from './App';
 import router from './router';
@@ -13,7 +13,7 @@ Vue.use(VueProgressBar, {
   height: '2px',
 });
 
-Vue.use(VueResource);
+Vue.use(axios);
 
 Vue.config.productionTip = false;
 
