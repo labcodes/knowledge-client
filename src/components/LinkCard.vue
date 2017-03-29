@@ -20,7 +20,7 @@
     <footer class="card-footer">
       <a
         title="Copy to clipboard."
-        class="card-footer-item"
+        class="card-footer-item btn-copy"
         @click="copyToClipboard">
 
         <span class="icon">
@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import Clipboard from 'clipboard';
+
 export default {
   name: 'link-card',
 
@@ -69,9 +71,17 @@ export default {
     };
   },
 
+  mounted() {
+    this.clipboard = new Clipboard('.btn-copy');
+  },
+
+  beforeDestroy() {
+    this.clipboard.destroy();
+  },
+
   methods: {
-    copyToClipboard() {
-      console.warn('Copiado para o clipboard.');
+    copyToClipboard(event) {
+      event.target.setAttribute('data-clipboard-text', this.card.url);
     },
 
     shareFacebook() {
