@@ -36,6 +36,7 @@
       </router-link>
 
       <router-link
+        v-if="!logged"
         class="nav-item"
         title="Login"
         to="/login"

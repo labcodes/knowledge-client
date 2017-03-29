@@ -19,8 +19,8 @@ function validateRoute(next) {
   const userInfo = storage.get();
 
   if (!userInfo) {
-    next(true);
-    // next({ path: '/' });
+    // next(true);
+    next({ path: '/' });
   } else {
     next(true);
   }

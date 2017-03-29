@@ -59,6 +59,8 @@
         this.storage.set(data);
         this.isLogged = true;
 
+        this.$router.push('/links');
+
         this.$Progress.finish();
       },
     },
