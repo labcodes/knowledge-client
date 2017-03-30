@@ -7,6 +7,7 @@ class ApiService {
     this.apiUrl = 'http://localhost:3000/api';
 
     this.getLinks = this.getLinks;
+    this.addLink = this.addLink;
   }
 
   getLinks() {
@@ -19,6 +20,10 @@ class ApiService {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  addLink() {
+    console.warn(this.apiUrl);
   }
 }
 

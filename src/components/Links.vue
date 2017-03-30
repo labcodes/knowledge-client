@@ -63,6 +63,8 @@ export default {
 
   methods: {
     handleList(array) {
+      this.linksArray = [];
+
       array.forEach((item) => {
         this.linksArray.push(item);
       });

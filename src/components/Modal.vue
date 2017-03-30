@@ -43,12 +43,17 @@
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+
 export default {
   name: 'modal',
 
-  props: [
-    'active',
-  ],
+  props: {
+    active: {
+      type: Boolean,
+      required: true,
+    },
+  },
 
   computed: {
     isActive() {
@@ -77,8 +82,11 @@ export default {
     },
 
     addNewLink() {
-      this.form.tags = this.form.tags.split(',');
-      console.warn(this.form);
+      this.form.tags = this.form.tags.split(',').map(item => item.replace(' ', ''));
+
+      Event.$emit('new_link', this.form);
+
+      this.closeModal();
     },
   },
 };

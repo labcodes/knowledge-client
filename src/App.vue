@@ -11,6 +11,7 @@
 
   // Services
   import Localstorage from './assets/js/Localstorage';
+  import ApiService from './assets/js/ApiService';
   import Event from './assets/js/Event';
   import Auth from './assets/js/Auth';
 
@@ -38,10 +39,13 @@
 
       Event.$on('login', this.handleLogin);
       Event.$on('user_logged', this.handleUserLogged);
+
+      Event.$on('new_link', this.handleLink);
     },
 
     beforeDestroy() {
       Event.$off('login');
+      Event.$off('new_link');
       Event.$off('user_logged');
     },
 
@@ -60,6 +64,17 @@
         this.isLogged = true;
 
         this.$router.push('/links');
+
+        this.$Progress.finish();
+      },
+
+      handleLink(data) {
+        console.warn('O usuário acabou de submeter um link..', data);
+
+        this.api = new ApiService();
+        this.api.addLink();
+
+        this.api.getLinks();
 
         this.$Progress.finish();
       },
