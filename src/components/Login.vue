@@ -30,7 +30,10 @@
           </div>
         </fieldset>
 
-        <button type="submit" class="button is-primary">
+        <button
+          type="submit"
+          class="button is-primary"
+          :class="{ 'is-loading': form.isLoading }">
           Login
         </button>
       </form>
@@ -49,12 +52,15 @@ export default {
       form: {
         username: '',
         password: '',
+        isLoading: false,
       },
     };
   },
 
   methods: {
     handleLogin() {
+      this.form.isLoading = true;
+
       if (typeof this.form.username === 'string' && typeof this.form.password === 'string') {
         this.emitEvent();
       }
@@ -69,6 +75,8 @@ export default {
     clearForm() {
       this.form.username = '';
       this.form.password = '';
+
+      this.form.isLoading = false;
     },
   },
 

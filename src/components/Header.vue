@@ -52,11 +52,30 @@
         exact>
         Links
       </router-link>
+
+      <!-- <button
+        v-if="logged"
+        class="button is-default nav-item"
+        @click="logout">
+        Logout
+      </button> -->
+
+      <router-link
+        v-if="logged"
+        class="nav-item"
+        title="Logout"
+        to="/"
+        exact
+        @click.native="logout">
+        Logout
+      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+
 export default {
   name: 'header',
 
@@ -77,6 +96,10 @@ export default {
   methods: {
     toggleNavbar() {
       this.isActive = !this.isActive;
+    },
+
+    logout() {
+      Event.$emit('logout');
     },
   },
 };

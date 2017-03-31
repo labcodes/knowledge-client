@@ -39,19 +39,17 @@
       }
 
       Event.$on('login', this.handleLogin);
+      Event.$on('logout', this.handleLogout);
       Event.$on('user_logged', this.handleUserLogged);
-
       Event.$on('new_link', this.handleLink);
-
       Event.$on('error', this.handleError);
     },
 
     beforeDestroy() {
       Event.$off('login');
+      Event.$off('logout');
       Event.$off('user_logged');
-
       Event.$off('new_link');
-
       Event.$off('error');
     },
 
@@ -61,6 +59,11 @@
 
         this.auth = new Auth(data);
         this.auth.login();
+      },
+
+      handleLogout() {
+        this.storage.clear();
+        this.isLogged = false;
       },
 
       handleUserLogged(data) {
