@@ -14,6 +14,7 @@
   import ApiService from './assets/js/ApiService';
   import Event from './assets/js/Event';
   import Auth from './assets/js/Auth';
+  import Alert from './assets/js/Alert';
 
   export default {
     name: 'app',
@@ -83,7 +84,10 @@
       },
 
       handleError(data) {
-        console.warn(data);
+        console.warn('Error: -> ', data);
+
+        const modal = new Alert(data);
+        modal.error();
       },
     },
   };
@@ -97,4 +101,5 @@
   }
 
   @import "../node_modules/bulma/bulma.sass";
+  @import "../src/assets/css/sweetalert.scss";
 </style>
