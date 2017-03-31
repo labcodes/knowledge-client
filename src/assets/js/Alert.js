@@ -4,6 +4,7 @@ class Alert {
   constructor() {
     this.title = 'ERROR!';
     this.text = 'Aqui vem um alerta de error.';
+    this.alert = swal;
   }
 
   error() {
@@ -22,7 +23,7 @@ class Alert {
   }
 
   display() {
-    swal({
+    this.alert({
       title: this.title,
       text: this.text,
       type: this.alertType,
