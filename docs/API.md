@@ -180,7 +180,7 @@ Resources related to links in the API.
 
 + Response 200
 
-## Login [/accounts/login/]
+## Login [/api/accounts/login/]
 
 ### Login in the system [POST]
 
