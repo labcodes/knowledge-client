@@ -7,10 +7,25 @@ class Alert {
   }
 
   error() {
+    this.alertType = 'error';
+    this.display();
+  }
+
+  success() {
+    this.alertType = 'success';
+    this.display();
+  }
+
+  warning() {
+    this.alertType = 'warning';
+    this.display();
+  }
+
+  display() {
     swal({
       title: this.title,
       text: this.text,
-      type: 'error',
+      type: this.alertType,
       confirmButtonText: 'OK',
     });
   }
