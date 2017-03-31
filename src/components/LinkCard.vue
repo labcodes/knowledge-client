@@ -66,8 +66,8 @@ export default {
 
   data() {
     return {
-      fbLink: this.shareFacebook(),
-      twLink: this.shareTwitter(),
+      fbLink: '',
+      twLink: '',
     };
   },
 
