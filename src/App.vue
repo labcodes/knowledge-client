@@ -58,8 +58,6 @@
       },
 
       handleUserLogged(data) {
-        console.warn('O usuário acabou de fazer login..', data);
-
         this.storage.set(data);
         this.isLogged = true;
 

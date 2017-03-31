@@ -4,23 +4,23 @@ import Event from './Event';
 class Auth {
   constructor(data) {
     this.formData = data;
-    this.apiUrl = 'https://jsonplaceholder.typicode.com';
-    this.http = axios;
+    this.apiUrl = 'http://localhost:3000/api';
   }
 
   login() {
-    this.url = `${this.apiUrl}/posts`;
-
     const { username, password } = this.formData;
 
-    this.http
-      .post(this.url, { username, password })
-      .then((response) => {
-        Event.$emit('user_logged', response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    axios
+    .post(`${this.apiUrl}/accounts/login/`, {
+      username,
+      password,
+    })
+    .then((response) => {
+      Event.$emit('user_logged', response.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   }
 
   // logout() {}
