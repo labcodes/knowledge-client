@@ -3,12 +3,12 @@ import Event from './Event';
 
 class Auth {
   constructor(data) {
-    this.formData = data;
+    this.data = data;
     this.apiUrl = 'http://localhost:3000/api';
   }
 
   login() {
-    const { username, password } = this.formData;
+    const { username, password } = this.data;
 
     axios
     .post(`${this.apiUrl}/accounts/login/`, {
