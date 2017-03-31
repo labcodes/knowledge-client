@@ -19,7 +19,7 @@ class Auth {
       Event.$emit('user_logged', response.data);
     })
     .catch((err) => {
-      console.error(err);
+      Event.$emit('error', err);
     });
   }
 

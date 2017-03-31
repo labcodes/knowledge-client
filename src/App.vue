@@ -41,12 +41,17 @@
       Event.$on('user_logged', this.handleUserLogged);
 
       Event.$on('new_link', this.handleLink);
+
+      Event.$on('error', this.handleError);
     },
 
     beforeDestroy() {
       Event.$off('login');
-      Event.$off('new_link');
       Event.$off('user_logged');
+
+      Event.$off('new_link');
+
+      Event.$off('error');
     },
 
     methods: {
@@ -75,6 +80,10 @@
         this.api.getLinks();
 
         this.$Progress.finish();
+      },
+
+      handleError(data) {
+        console.warn(data);
       },
     },
   };
