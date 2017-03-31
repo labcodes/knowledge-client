@@ -3,22 +3,19 @@ import Event from './Event';
 
 class ApiService {
   constructor() {
-    this.http = axios;
     this.apiUrl = 'http://localhost:3000/api';
-
-    this.getLinks = this.getLinks;
-    this.addLink = this.addLink;
   }
 
   getLinks() {
     this.url = `${this.apiUrl}/links/`;
 
-    this.http.get(this.url)
+    axios
+      .get(this.url)
       .then((response) => {
         Event.$emit('links_list', response.data);
       })
       .catch((err) => {
-        console.error(err);
+        Event.$emit('error', err);
       });
   }
 
