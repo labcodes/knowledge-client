@@ -27,5 +27,5 @@ npm run e2e
 npm test
 
 # run the blueprint API
-drakov -f "docs/api.md"  --autoOptions --disableCOR
+npm run api
 ```
