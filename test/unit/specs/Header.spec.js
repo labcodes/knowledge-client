@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import Header from '@/components/Header';
 
 describe('Header.vue', () => {
@@ -16,5 +17,16 @@ describe('Header.vue', () => {
 
     expect(ComponentData.isActive).to.equal(false);
     expect(ComponentData.repoUrl).to.equal(repoUrl);
+  });
+
+  it('check if the togglenavbar function change the isActive value.', () => {
+    const ComponentData = Header.data();
+    const vm = new Vue(Header).$mount();
+
+    const isActive = ComponentData.isActive;
+
+    vm.toggleNavbar();
+
+    expect(isActive).to.equal(!vm.isActive);
   });
 });
