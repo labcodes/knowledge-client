@@ -65,13 +65,15 @@ export default {
         this.emitEvent(this.form);
       }
 
-      setTimeout(() => {
-        Object.assign(this.$data, this.$options.data());
-      });
+      setTimeout(() => this.clearForm());
     },
 
     emitEvent(data) {
       Event.$emit('login', data);
+    },
+
+    clearForm() {
+      Object.assign(this.$data, this.$options.data());
     },
   },
 
