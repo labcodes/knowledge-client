@@ -65,7 +65,7 @@ export default {
         this.emitEvent();
       }
 
-      this.data = this.$options.data();
+      this.form = this.$options.data();
     },
 
     emitEvent() {
