@@ -59,24 +59,17 @@ export default {
 
   methods: {
     handleLogin() {
-      this.form.isLoading = true;
+      this.form.isLoading = !this.form.isLoading;
 
       if (typeof this.form.username === 'string' && typeof this.form.password === 'string') {
         this.emitEvent();
       }
 
-      this.clearForm();
+      this.data = this.$options.data();
     },
 
     emitEvent() {
       Event.$emit('login', this.form);
-    },
-
-    clearForm() {
-      this.form.username = '';
-      this.form.password = '';
-
-      this.form.isLoading = false;
     },
   },
 

@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import Login from '@/components/Login';
 
 describe('Login.vue', () => {
@@ -7,7 +8,6 @@ describe('Login.vue', () => {
 
     expect(typeof Login.methods.handleLogin).to.equal('function');
     expect(typeof Login.methods.emitEvent).to.equal('function');
-    expect(typeof Login.methods.clearForm).to.equal('function');
   });
 
   it('check if the data will be set correctly.', () => {
@@ -18,5 +18,16 @@ describe('Login.vue', () => {
     expect(ComponentData.form.username).to.equal('');
     expect(ComponentData.form.password).to.equal('');
     expect(ComponentData.form.isLoading).to.equal(false);
+  });
+
+  it('check if the handleLogin method change the isLoading value.', () => {
+    const ComponentData = Login.data();
+    const vm = new Vue(Login).$mount();
+
+    const isLoading = ComponentData.form.isLoading;
+
+    vm.handleLogin();
+
+    expect(isLoading).to.equal(!vm.form.isLoading);
   });
 });
