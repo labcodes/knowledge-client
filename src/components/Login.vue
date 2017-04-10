@@ -62,14 +62,16 @@ export default {
       this.form.isLoading = !this.form.isLoading;
 
       if (typeof this.form.username === 'string' && typeof this.form.password === 'string') {
-        this.emitEvent();
+        this.emitEvent(this.form);
       }
 
-      this.form = this.$options.data();
+      setTimeout(() => {
+        Object.assign(this.$data, this.$options.data());
+      });
     },
 
-    emitEvent() {
-      Event.$emit('login', this.form);
+    emitEvent(data) {
+      Event.$emit('login', data);
     },
   },
 
