@@ -4,6 +4,7 @@ import Event from './Event';
 class ApiService {
   constructor() {
     this.apiUrl = 'http://localhost:3000/api';
+    this.event = Event;
   }
 
   getLinks() {
@@ -12,10 +13,10 @@ class ApiService {
     axios
       .get(this.url)
       .then((response) => {
-        Event.$emit('links_list', response.data);
+        this.event.$emit('links_list', response.data);
       })
       .catch((err) => {
-        Event.$emit('error', err);
+        this.event.$emit('error', err);
       });
   }
 
