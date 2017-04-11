@@ -1,9 +1,11 @@
 import axios from 'axios';
 import Event from './Event';
 
+import AppConfig from '../config';
+
 class ApiService {
   constructor() {
-    this.apiUrl = 'http://localhost:3000/api';
+    this.apiUrl = AppConfig.apiUrl;
     this.event = Event;
   }
 
