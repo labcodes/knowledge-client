@@ -1,4 +1,3 @@
-// import sinon from 'sinon';
 import ApiService from '@/assets/js/ApiService';
 
 describe('ApiService.', () => {
