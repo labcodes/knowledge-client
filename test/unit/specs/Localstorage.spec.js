@@ -3,9 +3,9 @@ import Storage from '@/assets/js/Localstorage';
 describe('Localstorage.', () => {
   it('should set a new value into localstorage.', () => {
     const storage = new Storage('userInfo');
-    const userGetInfo = storage.get();
-
     storage.set({ username: 'user', token: '123' });
+
+    const userGetInfo = storage.get();
 
     expect(storage.key).to.be.equal('userInfo');
     expect(userGetInfo.username).to.be.equal('user');
