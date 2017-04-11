@@ -72,13 +72,12 @@ export default {
 
   methods: {
     closeModal() {
-      this.active = false;
-      this.clearFields();
+      this.active = !this.active;
+      setTimeout(() => this.clearFields());
     },
 
     clearFields() {
-      this.form.url = '';
-      this.form.tags = '';
+      Object.assign(this.$data, this.$options.data());
     },
 
     addNewLink() {
