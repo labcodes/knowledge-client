@@ -76,10 +76,8 @@
       },
 
       handleLink(data) {
-        console.warn('O usuário acabou de submeter um link..', data);
-
         this.api = new ApiService();
-        this.api.addLink();
+        this.api.addLink(data);
 
         this.api.getLinks();
 
@@ -87,8 +85,6 @@
       },
 
       handleError(data) {
-        console.warn('Error: -> ', data);
-
         const modal = new Alert(data);
         modal.error();
       },
