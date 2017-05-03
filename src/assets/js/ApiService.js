@@ -22,9 +22,8 @@ class ApiService {
       });
   }
 
-  addLink() {
-    console.warn(this.apiUrl);
-  }
+  // addLink() {
+  // }
 }
 
 export default ApiService;
