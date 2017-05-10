@@ -14,16 +14,16 @@ class Auth {
     const { username, password } = this.data;
 
     axios
-    .post(`${this.apiUrl}/accounts/login/`, {
-      username,
-      password,
-    })
-    .then((response) => {
-      this.event.$emit('user_logged', response.data);
-    })
-    .catch((err) => {
-      this.event.$emit('error', err);
-    });
+      .post(`${this.apiUrl}/auth/login/`, {
+        username,
+        password,
+      })
+      .then((response) => {
+        this.event.$emit('user_logged', response.data);
+      })
+      .catch((err) => {
+        this.event.$emit('error', err);
+      });
   }
 }
 
