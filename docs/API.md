@@ -11,7 +11,7 @@ Knowledge is the API that powers Knowledge-client app.
 + Response 200 (application/json)
 
     {
-        "links_url": "/links/"
+        "links_url": "/api/links/"
     }
 
 ## Group Link
@@ -29,7 +29,7 @@ Resources related to links in the API.
 
     + Headers
 
-        Next: </links/?page=2>; rel="next"
+        Next: </api/links/?page=2>; rel="next"
 
     + Body
 
@@ -42,23 +42,23 @@ Resources related to links in the API.
             "tags": [
                 {
                     "name": "Labcodes",
-                    "url": "/links/?tag=labcodes"
+                    "url": "/api/links/?tag=labcodes"
                 },
                 {
                     "name": "Python",
-                    "url": "/links/?tag=python"
+                    "url": "/api/links/?tag=python"
                 },
                 {
                     "name": "Django",
-                    "url": "/links/?tag=Django"
+                    "url": "/api/links/?tag=Django"
                 },
                 {
                     "name": "UX",
-                    "url": "/links/?tag=Ux"
+                    "url": "/api/links/?tag=Ux"
                 },
                 {
                     "name": "Vue",
-                    "url": "/links/?tag=vue"
+                    "url": "/api/links/?tag=vue"
                 }
             ]
         },
@@ -70,23 +70,23 @@ Resources related to links in the API.
             "tags": [
                 {
                     "name": "Labcodes",
-                    "url": "/links/?tag=labcodes"
+                    "url": "/api/links/?tag=labcodes"
                 },
                 {
                     "name": "Python",
-                    "url": "/links/?tag=python"
+                    "url": "/api/links/?tag=python"
                 },
                 {
                     "name": "Django",
-                    "url": "/links/?tag=Django"
+                    "url": "/api/links/?tag=Django"
                 },
                 {
                     "name": "UX",
-                    "url": "/links/?tag=Ux"
+                    "url": "/api/links/?tag=Ux"
                 },
                 {
                     "name": "Vue",
-                    "url": "/links/?tag=vue"
+                    "url": "/api/links/?tag=vue"
                 }
             ]
         },
@@ -98,23 +98,23 @@ Resources related to links in the API.
             "tags": [
                 {
                     "name": "Labcodes",
-                    "url": "/links/?tag=labcodes"
+                    "url": "/api/links/?tag=labcodes"
                 },
                 {
                     "name": "Python",
-                    "url": "/links/?tag=python"
+                    "url": "/api/links/?tag=python"
                 },
                 {
                     "name": "Django",
-                    "url": "/links/?tag=Django"
+                    "url": "/api/links/?tag=Django"
                 },
                 {
                     "name": "UX",
-                    "url": "/links/?tag=Ux"
+                    "url": "/api/links/?tag=Ux"
                 },
                 {
                     "name": "Vue",
-                    "url": "/links/?tag=vue"
+                    "url": "/api/links/?tag=vue"
                 }
             ]
         },
@@ -126,23 +126,23 @@ Resources related to links in the API.
             "tags": [
                 {
                     "name": "Labcodes",
-                    "url": "/links/?tag=labcodes"
+                    "url": "/api/links/?tag=labcodes"
                 },
                 {
                     "name": "Python",
-                    "url": "/links/?tag=python"
+                    "url": "/api/links/?tag=python"
                 },
                 {
                     "name": "Django",
-                    "url": "/links/?tag=Django"
+                    "url": "/api/links/?tag=Django"
                 },
                 {
                     "name": "UX",
-                    "url": "/links/?tag=Ux"
+                    "url": "/api/links/?tag=Ux"
                 },
                 {
                     "name": "Vue",
-                    "url": "/links/?tag=vue"
+                    "url": "/api/links/?tag=vue"
                 }
             ]
         }
