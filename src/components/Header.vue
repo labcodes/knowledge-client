@@ -28,18 +28,10 @@
       :class="{ 'is-active': isActive }">
 
       <router-link
-        class="nav-item"
-        title="Home"
-        to="/"
-        exact>
-        Home
-      </router-link>
-
-      <router-link
         v-if="!logged"
         class="nav-item"
         title="Login"
-        to="/login"
+        to="/"
         exact>
         Login
       </router-link>
