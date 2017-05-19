@@ -11,14 +11,14 @@ Knowledge is the API that powers Knowledge-client app.
 + Response 200 (application/json)
 
     {
-        "links_url": "/api/links/"
+        "links_url": "/links/"
     }
 
 ## Group Link
 
 Resources related to links in the API.
 
-## Links Collection [/api/links/{?page}]
+## Links Collection [/links/{?page}]
 
 + Parameters
     + page: 1 (optional, number) - The page of links to return

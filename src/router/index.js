@@ -1,12 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-// Components
-import Login from '../components/Login';
-import Links from '../components/Links';
-
 // Pages
 import HomePage from '../pages/Home';
+import LinksPage from '../pages/Links';
+import LoginPage from '../pages/Login';
 
 // Services
 import LocalStorage from '../assets/js/Localstorage';
@@ -42,12 +40,12 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: LoginPage,
     },
     {
       path: '/links',
       name: 'Links',
-      component: Links,
+      component: LinksPage,
       beforeEnter: (to, from, next) => {
         validateRoute(next);
       },
