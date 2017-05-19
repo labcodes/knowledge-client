@@ -17,7 +17,7 @@
             </h1>
 
             <small slot="card-date">
-              {{link.published_at}}
+              {{link.published_at | moment("from", "now", true)}}
             </small>
 
             <a

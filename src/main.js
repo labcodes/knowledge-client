@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueProgressBar from 'vue-progressbar';
+import VueMoment from 'vue-moment';
 
 import App from './App';
 import router from './router';
@@ -11,6 +12,8 @@ Vue.use(VueProgressBar, {
   failedColor: 'red',
   height: '2px',
 });
+
+Vue.use(VueMoment);
 
 Vue.config.productionTip = false;
 
