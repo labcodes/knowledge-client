@@ -1,54 +1,46 @@
 <template>
-  <aside class="card">
-    <header class="card-header">
-      <p class="card-header-title">
-        <slot name="card-title"></slot>
-      </p>
-    </header>
-
-    <div class="card-content">
-      <div class="content">
-        <slot name="card-description"></slot>
-
-        <slot name="card-tags"></slot>
-
-        <br>
-        <slot name="card-date"></slot>
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="http://dummyimage.com/128x128/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+        </figure>
       </div>
-    </div>
 
-    <footer class="card-footer">
-      <a
-        title="Copy to clipboard."
-        class="card-footer-item btn-copy"
-        @click="copyToClipboard">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><slot name="card-title"></slot></strong>
+            <small><slot name="card-date"></slot></small>
+            <br>
 
-        <span class="icon">
-          <i class="fa fa-clipboard"></i>
-        </span>
-      </a>
+            <slot name="card-description"></slot>
+            <slot name="card-tags"></slot>
+          </p>
+        </div>
 
-      <a
-        title="Click to share with Facebook."
-        class="card-footer-item"
-        :href="fbLink" target="_blank">
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <a class="level-item"
+              :href="fbLink"
+              target="_blank">
+              <span class="icon is-small">
+                <i class="fa fa-facebook"></i>
+              </span>
+            </a>
 
-        <span class="icon">
-          <i class="fa fa-facebook"></i>
-        </span>
-      </a>
-
-      <a
-        title="Click to share with Twitter."
-        class="card-footer-item"
-        :href="twLink" target="_blank">
-
-        <span class="icon">
-          <i class="fa fa-twitter"></i>
-        </span>
-      </a>
-    </footer>
-  </aside>
+            <a class="level-item"
+              :href="twLink"
+              target="_blank">
+              <span class="icon is-small">
+                <i class="fa fa-twitter"></i>
+              </span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
@@ -112,4 +104,7 @@ export default {
 </script>
 
 <style scoped>
+  .box {
+    margin: 20px auto;
+  }
 </style>

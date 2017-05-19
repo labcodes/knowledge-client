@@ -1,76 +1,97 @@
 <template>
-  <section class="section columns">
-    <div v-for="link in linksArray" class="column is-3">
-      <kn-card :card="link">
-        <h1 slot="card-title">
-          {{link.title}}
-        </h1>
+  <div>
+    <kn-subheader title="Links" subtitle="">
+    </kn-subheader>
 
-        <small slot="card-date">
-          {{link.published_at}}
-        </small>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">Últimos Links</h1>
+          <h2 class="subtitle">os últimos links postados pelo time, você encontra aqui.</h2>
+        </div>
 
-        <p slot="card-description">
-          {{link.url}}
-        </p>
+        <aside v-for="link in linksArray">
+          <kn-card :card="link">
+            <h1 slot="card-title">
+              {{link.title}}
+            </h1>
 
-        <a
-          slot="card-tags"
-          v-for="tag in link.tags"
-          target="_blank"
-          :href="tag.url">
+            <small slot="card-date">
+              {{link.published_at}}
+            </small>
 
-          #{{tag.name}}
-        </a>
-      </kn-card>
-    </div>
+            <p slot="card-description">
+              {{link.url}}
+            </p>
 
-    <kn-fab-button></kn-fab-button>
-  </section>
+            <a
+              slot="card-tags"
+              v-for="tag in link.tags"
+              target="_blank"
+              :href="tag.url">
+
+              #{{tag.name}}
+            </a>
+          </kn-card>
+        </aside>
+
+        <kn-fab-button></kn-fab-button>
+      </div>
+    </section>
+  </div>
+
 </template>
 
 <script>
-import knCard from '../components/Card';
-import knFabButton from '../components/FabButton';
+  // Components
+  import knCard from '../components/Card';
+  import knFabButton from '../components/FabButton';
+  import knSubheader from '../components/Subheader';
 
-import ApiService from '../assets/js/ApiService';
-import Event from '../assets/js/Event';
+  // Assets
+  import ApiService from '../assets/js/ApiService';
+  import Event from '../assets/js/Event';
 
-export default {
-  name: 'Links',
+  export default {
+    name: 'Links',
 
-  components: {
-    knCard,
-    knFabButton,
-  },
-
-  data() {
-    return {
-      linksArray: [],
-    };
-  },
-
-  mounted() {
-    this.api = new ApiService();
-    this.api.getLinks();
-
-    Event.$on('links_list', this.handleList);
-  },
-
-  beforeDestroy() {
-    Event.$off('links_list');
-  },
-
-  methods: {
-    handleList(array) {
-      this.linksArray = [];
-
-      array.forEach((item) => {
-        this.linksArray.push(item);
-      });
+    components: {
+      knCard,
+      knFabButton,
+      knSubheader,
     },
-  },
-};
+
+    data() {
+      return {
+        linksArray: [],
+      };
+    },
+
+    mounted() {
+      this.api = new ApiService();
+      this.api.getLinks();
+
+      Event.$on('links_list', this.handleList);
+    },
+
+    beforeDestroy() {
+      Event.$off('links_list');
+    },
+
+    methods: {
+      handleList(array) {
+        this.linksArray = [];
+
+        array.forEach((item) => {
+          this.linksArray.push(item);
+        });
+      },
+    },
+  };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .heading {
+    margin-bottom: 40px;
+  }
+</style>
