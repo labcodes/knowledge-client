@@ -33,7 +33,7 @@
             </a>
 
             <a class="level-item"
-              :href="fbLink"
+              @click="shareFacebook"
               title="Share with Facebook"
               target="_blank">
               <span class="icon is-medium">
@@ -42,7 +42,7 @@
             </a>
 
             <a class="level-item"
-              :href="twLink"
+              @click="shareTwitter"
               title="Share with Twitter"
               target="_blank">
               <span class="icon is-medium">
@@ -71,8 +71,8 @@ export default {
 
   data() {
     return {
-      fbLink: '',
-      twLink: '',
+      fbLink: null,
+      twLink: null,
     };
   },
 
@@ -90,27 +90,21 @@ export default {
     },
 
     shareFacebook() {
-      const obj = this.makeUrl();
-      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${obj.postUrl}`;
+      const linkUrl = this.$props.card.url;
+      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${linkUrl}`;
 
-      return shareUrl;
+      this.share(shareUrl);
     },
 
     shareTwitter() {
-      const obj = this.makeUrl();
-      const shareUrl = `https://twitter.com/intent/tweet?text=${obj.title} ${obj.postUrl}`;
+      const linkUrl = this.$props.card;
+      const shareUrl = `https://twitter.com/intent/tweet?text=${linkUrl.title} ${linkUrl.url}`;
 
-      return shareUrl;
+      this.share(shareUrl);
     },
 
-    makeUrl() {
-      const title = this.card.title.replace(/\s/g, '-');
-      const postUrl = this.card.url;
-
-      return {
-        title,
-        postUrl,
-      };
+    share(url) {
+      return window.open(url, '_blank');
     },
   },
 };
