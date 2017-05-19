@@ -30,29 +30,37 @@
         <!-- v-if="!logged" -->
       <router-link
         class="nav-item"
+        title="Home"
+        to="/"
+        exact>
+        Home
+      </router-link>
+
+      <router-link
+        class="nav-item"
         title="Login"
         to="/login"
         exact>
         Login
       </router-link>
 
-        <!-- v-if="logged" -->
-      <router-link
-        class="nav-item"
-        title="Links"
-        to="/links"
-        exact>
-        Links
-      </router-link>
+      <div v-if="logged">
+        <router-link
+          class="nav-item"
+          title="Links"
+          to="/links"
+          exact>
+          Links
+        </router-link>
 
-        <!-- v-if="logged" -->
-      <router-link
-        class="nav-item"
-        title="Logout"
-        to="/logout"
-        @click.native="logout">
-        Logout
-      </router-link>
+        <router-link
+          class="nav-item"
+          title="Logout"
+          to="/logout"
+          @click.native="logout">
+          Logout
+        </router-link>
+      </div>
     </div>
   </nav>
 </template>

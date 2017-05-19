@@ -1,5 +1,10 @@
 <template>
   <div>
+    <kn-subheader
+      title="Home"
+      subtitle="Seja bem vindo..">
+    </kn-subheader>
+
     <section class="section">
       <div class="container">
         <div class="heading">
@@ -14,8 +19,14 @@
 </template>
 
 <script>
+  import knSubheader from '../components/Subheader';
+
   export default {
     name: 'Home',
+
+    components: {
+      knSubheader,
+    },
 
     data() {
       return {};

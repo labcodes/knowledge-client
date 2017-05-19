@@ -1,12 +1,6 @@
 <template>
   <div id="app">
     <kn-header :logged="isLogged"></kn-header>
-
-    <kn-subheader
-      title="Knowledge"
-      subtitle="Seja bem vindo..">
-    </kn-subheader>
-
     <router-view></router-view>
   </div>
 </template>
@@ -14,7 +8,6 @@
 <script>
   // Components
   import knHeader from './components/Header';
-  import knSubheader from './components/Subheader';
 
   // Services
   import Localstorage from './assets/js/Localstorage';
@@ -28,7 +21,6 @@
 
     components: {
       knHeader,
-      knSubheader,
     },
 
     data() {
