@@ -26,6 +26,19 @@ class ApiService {
         this.event.$emit('error', err);
       });
   }
+
+  getLinksByTag(tag) {
+    this.url = `${this.apiUrl}/links/?page=${tag}`;
+
+    axios
+      .get(this.url)
+      .then((response) => {
+        this.event.$emit('searched_links', response.data);
+      })
+      .catch((err) => {
+        this.event.$emit('error', err);
+      });
+  }
 }
 
 export default ApiService;

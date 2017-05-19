@@ -13,7 +13,7 @@
               Até hoje temos {{linksArray.length}} links.</h2>
 
             <h2 class="subtitle" v-if="tagSearch.length">
-              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{tagSearch[0]}}</span> que retornou {{tagSearch.length}} links.</h2>
+              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{route}}</span> que retornou {{tagSearch.length}} links.</h2>
 
               <span
                 v-if="tagSearch.length"
@@ -84,6 +84,7 @@
       return {
         linksArray: [],
         tagSearch: [],
+        route: null,
       };
     },
 
@@ -92,12 +93,12 @@
       this.api.getLinks();
 
       Event.$on('links_list', this.handleList);
-
-      console.warn(this.$route);
+      Event.$on('searched_links', this.handleSearch);
     },
 
     beforeDestroy() {
       Event.$off('links_list');
+      Event.$off('searched_links');
     },
 
     methods: {
@@ -113,13 +114,19 @@
         this.tagSearch = [];
         this.tagSearch.push(name.toLowerCase());
 
+        this.route = name.toLowerCase();
+
         this.filterBy(this.tagSearch[0]);
 
         this.$router.push(`/links/page/${this.tagSearch}`);
       },
 
       filterBy(tag) {
-        console.warn(tag);
+        this.api.getLinksByTag(tag);
+      },
+
+      handleSearch(array) {
+        this.tagSearch = array;
       },
 
       removeFilter() {
