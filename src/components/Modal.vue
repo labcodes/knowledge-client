@@ -3,7 +3,14 @@
     <div class="modal-background"></div>
 
     <div class="modal-content">
-      <div class="is-half is-offset-one-quarter">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title">Adicionar Links</h1>
+          <h2 class="subtitle">
+            Utilize o formulário abaixo para adicionar um link, ou utilize a nossa <strong><a href="https://github.com/labcodes/knowledge-extension">extensão para o navegador</a></strong>.
+          </h2>
+        </div>
+
         <form @submit.prevent="addNewLink">
           <fieldset class="field">
             <label for="url" class="label">URL</label>
@@ -96,7 +103,28 @@ export default {
     border: none;
   }
 
-  label {
+  h1, h2, label {
     color: #FFFFFF;
+  }
+
+  strong {
+    color: #00d1b2;
+  }
+
+  a {
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+
+    transition: border .25s linear;
+  }
+
+  a:hover {
+    color: #00d1b2;
+    padding-bottom: 4px;
+    border-bottom-color: #00d1b2;
+  }
+
+  .heading {
+    margin-bottom: 30px;
   }
 </style>
