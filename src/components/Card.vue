@@ -23,7 +23,7 @@
 
         <nav class="level is-mobile">
           <div class="level-left">
-            <a class="level-item"
+            <a class="level-item btn-copy"
               title="Copy to Clipboard"
               @click="copyToClipboard"
               target="_blank">
@@ -86,7 +86,11 @@ export default {
 
   methods: {
     copyToClipboard(event) {
-      event.target.setAttribute('data-clipboard-text', this.card.url);
+      const parent = event.target.parentElement.parentElement;
+
+      if (parent) {
+        parent.setAttribute('data-clipboard-text', this.card.url);
+      }
     },
 
     shareFacebook() {
