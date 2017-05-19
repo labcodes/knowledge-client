@@ -2,12 +2,14 @@
   <div id="app">
     <kn-header :logged="isLogged"></kn-header>
     <router-view></router-view>
+    <kn-footer></kn-footer>
   </div>
 </template>
 
 <script>
   // Components
   import knHeader from './components/Header';
+  import knFooter from './components/Footer';
 
   // Services
   import Localstorage from './assets/js/Localstorage';
@@ -21,6 +23,7 @@
 
     components: {
       knHeader,
+      knFooter,
     },
 
     data() {
@@ -97,6 +100,10 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .section {
+    min-height: 380px;
   }
 
   @import "../node_modules/bulma/bulma.sass";
