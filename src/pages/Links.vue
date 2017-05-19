@@ -7,7 +7,7 @@
       <div class="container">
         <div class="heading">
           <h1 class="title">Últimos Links</h1>
-          <h2 class="subtitle">os últimos links postados pelo time, você encontra aqui.</h2>
+          <h2 class="subtitle">Até hoje temos {{linksArray.length}} links.</h2>
         </div>
 
         <aside v-for="link in linksArray">
@@ -20,14 +20,19 @@
               {{link.published_at}}
             </small>
 
-            <p slot="card-description">
+            <a
+              class="link-url"
+              :href="link.url"
+              target="_blank"
+              slot="card-description">
               {{link.url}}
-            </p>
+            </a>
 
             <a
               slot="card-tags"
               v-for="tag in link.tags"
               target="_blank"
+              class="tag"
               :href="tag.url">
 
               #{{tag.name}}
@@ -93,5 +98,19 @@
 <style scoped>
   .heading {
     margin-bottom: 40px;
+  }
+
+  .link-url {
+    display: block;
+    margin: 10px auto;
+  }
+
+  .tag {
+    margin-right: 5px;
+  }
+
+  .tag:hover {
+    background-color: #00d1b2;
+    color: #FFFFFF;
   }
 </style>

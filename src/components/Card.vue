@@ -19,20 +19,33 @@
           </p>
         </div>
 
+        <hr />
+
         <nav class="level is-mobile">
           <div class="level-left">
             <a class="level-item"
-              :href="fbLink"
+              title="Copy to Clipboard"
+              @click="copyToClipboard"
               target="_blank">
-              <span class="icon is-small">
+              <span class="icon is-medium">
+                <i class="fa fa-copy"></i>
+              </span>
+            </a>
+
+            <a class="level-item"
+              :href="fbLink"
+              title="Share with Facebook"
+              target="_blank">
+              <span class="icon is-medium">
                 <i class="fa fa-facebook"></i>
               </span>
             </a>
 
             <a class="level-item"
               :href="twLink"
+              title="Share with Twitter"
               target="_blank">
-              <span class="icon is-small">
+              <span class="icon is-medium">
                 <i class="fa fa-twitter"></i>
               </span>
             </a>
