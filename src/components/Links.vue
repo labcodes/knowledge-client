@@ -1,7 +1,7 @@
 <template>
   <section class="section columns">
     <div v-for="link in linksArray" class="column is-3">
-      <kn-link-card :card="link">
+      <kn-card :card="link">
         <h1 slot="card-title">
           {{link.title}}
         </h1>
@@ -22,7 +22,7 @@
 
           #{{tag.name}}
         </a>
-      </kn-link-card>
+      </kn-card>
     </div>
 
     <kn-fab-button></kn-fab-button>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import knLinkCard from './LinkCard';
+import knCard from './Card';
 import knFabButton from './FabButton';
 
 import ApiService from '../assets/js/ApiService';
@@ -40,7 +40,7 @@ export default {
   name: 'links',
 
   components: {
-    knLinkCard,
+    knCard,
     knFabButton,
   },
 
