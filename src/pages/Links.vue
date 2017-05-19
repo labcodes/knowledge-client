@@ -12,11 +12,11 @@
             <h2 class="subtitle" v-if="!tagSearch">
               Até hoje temos {{linksArray.length}} links.</h2>
 
-            <h2 class="subtitle" v-if="tagSearch">
-              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{tagSearch}}</span> que retornou {{tagSearch.length}} links.</h2>
+            <h2 class="subtitle" v-if="tagSearch.length">
+              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{tagSearch[0]}}</span> que retornou {{tagSearch.length}} links.</h2>
 
               <span
-              v-if="tagSearch"
+                v-if="tagSearch.length"
                 @click="removeFilter"
                 class="remove-filter">
                 limpar filtros.
@@ -83,7 +83,7 @@
     data() {
       return {
         linksArray: [],
-        tagSearch: null,
+        tagSearch: [],
       };
     },
 
@@ -92,6 +92,8 @@
       this.api.getLinks();
 
       Event.$on('links_list', this.handleList);
+
+      console.warn(this.$route);
     },
 
     beforeDestroy() {
@@ -108,12 +110,20 @@
       },
 
       handleTag(name) {
-        this.tagSearch = name.toLowerCase();
+        this.tagSearch = [];
+        this.tagSearch.push(name.toLowerCase());
+
+        this.filterBy(this.tagSearch[0]);
+
         this.$router.push(`/links/page/${this.tagSearch}`);
       },
 
+      filterBy(tag) {
+        console.warn(tag);
+      },
+
       removeFilter() {
-        this.tagSearch = null;
+        this.tagSearch = [];
         this.$router.push('/links/');
       },
     },
