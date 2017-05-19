@@ -19,8 +19,8 @@ function validateRoute(next) {
   const userInfo = storage.get();
 
   if (!userInfo) {
-    // next(true);
-    next({ path: '/' });
+    next(true);
+    // next({ path: '/' });
   } else {
     next(true);
   }
@@ -46,6 +46,12 @@ export default new Router({
       path: '/links',
       name: 'Links',
       component: LinksPage,
+      children: [
+        {
+          path: 'page/:id',
+          name: 'LinkSearch',
+        },
+      ],
       beforeEnter: (to, from, next) => {
         validateRoute(next);
       },

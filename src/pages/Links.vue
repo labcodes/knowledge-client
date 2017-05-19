@@ -14,6 +14,13 @@
 
             <h2 class="subtitle" v-if="tagSearch">
               Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{tagSearch}}</span> que retornou {{tagSearch.length}} links.</h2>
+
+              <span
+              v-if="tagSearch"
+                @click="removeFilter"
+                class="remove-filter">
+                limpar filtros.
+              </span>
           </div>
         </div>
 
@@ -102,6 +109,12 @@
 
       handleTag(name) {
         this.tagSearch = name.toLowerCase();
+        this.$router.push(`/links/page/${this.tagSearch}`);
+      },
+
+      removeFilter() {
+        this.tagSearch = null;
+        this.$router.push('/links/');
       },
     },
   };
@@ -121,12 +134,17 @@
     margin-right: 5px;
   }
 
-  .tag:hover {
+  .tag:hover, .tag.is-active {
     background-color: #00d1b2;
     color: #FFFFFF;
   }
 
   .tag-search {
+    color: #00d1b2;
+  }
+
+  .remove-filter {
+    cursor: pointer;
     color: #00d1b2;
   }
 </style>
