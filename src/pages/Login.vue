@@ -62,7 +62,7 @@ import knSubheader from '../components/Subheader';
 import Event from '../assets/js/Event';
 
 export default {
-  name: 'login',
+  name: 'LoginPage',
 
   components: {
     knSubheader,
