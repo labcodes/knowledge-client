@@ -53,14 +53,13 @@
         Links
       </router-link>
 
-      <router-link
+      <a
         v-if="logged"
         class="nav-item"
         title="Logout"
-        to="/logout"
-        @click.native="logout">
+        @click="logout">
         Logout
-      </router-link>
+      </a>
     </div>
   </nav>
 </template>

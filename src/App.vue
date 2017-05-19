@@ -66,6 +66,9 @@
 
       handleLogout() {
         this.storage.clear();
+
+        this.$router.push('/');
+
         this.isLogged = false;
       },
 
