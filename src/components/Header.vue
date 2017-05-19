@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        Knowledge
+        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
       </a>
     </div>
 
@@ -27,8 +27,8 @@
       class="nav-right nav-menu"
       :class="{ 'is-active': isActive }">
 
+        <!-- v-if="!logged" -->
       <router-link
-        v-if="!logged"
         class="nav-item"
         title="Login"
         to="/"
@@ -36,8 +36,8 @@
         Login
       </router-link>
 
+        <!-- v-if="logged" -->
       <router-link
-        v-if="logged"
         class="nav-item"
         title="Links"
         to="/links"
@@ -45,19 +45,11 @@
         Links
       </router-link>
 
-      <!-- <button
-        v-if="logged"
-        class="button is-default nav-item"
-        @click="logout">
-        Logout
-      </button> -->
-
+        <!-- v-if="logged" -->
       <router-link
-        v-if="logged"
         class="nav-item"
         title="Logout"
-        to="/"
-        exact
+        to="/logout"
         @click.native="logout">
         Logout
       </router-link>
@@ -98,24 +90,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  %active {
-    background-color: #00D1B2;
-    border-color: transparent;
-    color: #FFFFFF;
-  }
-
   .router-link-active {
-    @extend %active;
-  }
-
-  .nav-right {
-    .nav-item {
-      transition: all, .25s, linear;
-      border-radius: 0 0 5px 5px;
-
-      &:hover {
-        @extend %active;
-      }
-    }
+    color: #00D1B2;
   }
 </style>
