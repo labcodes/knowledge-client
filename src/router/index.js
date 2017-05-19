@@ -5,6 +5,9 @@ import Router from 'vue-router';
 import Login from '../components/Login';
 import Links from '../components/Links';
 
+// Pages
+import HomePage from '../pages/Home';
+
 // Services
 import LocalStorage from '../assets/js/Localstorage';
 
@@ -33,6 +36,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
+      component: HomePage,
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login,
     },

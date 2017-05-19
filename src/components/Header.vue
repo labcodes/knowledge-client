@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+        <img src="http://www.labcodes.com.br/static/core/imgs/logo500x216.svg" alt="Labcodes">
       </a>
     </div>
 
@@ -31,7 +31,7 @@
       <router-link
         class="nav-item"
         title="Login"
-        to="/"
+        to="/login"
         exact>
         Login
       </router-link>
