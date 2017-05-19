@@ -1,37 +1,76 @@
 <template>
-  <div>
-    <kn-subheader
-      title="Links"
-      subtitle="">
-    </kn-subheader>
+  <section class="section columns">
+    <div v-for="link in linksArray" class="column is-3">
+      <kn-card :card="link">
+        <h1 slot="card-title">
+          {{link.title}}
+        </h1>
 
-    <section class="section">
-      <div class="container">
-        <div class="heading">
-          <h1 class="title">Links Section</h1>
-          <h2 class="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-          </h2>
-        </div>
-      </div>
-    </section>
-  </div>
+        <small slot="card-date">
+          {{link.published_at}}
+        </small>
+
+        <p slot="card-description">
+          {{link.url}}
+        </p>
+
+        <a
+          slot="card-tags"
+          v-for="tag in link.tags"
+          target="_blank"
+          :href="tag.url">
+
+          #{{tag.name}}
+        </a>
+      </kn-card>
+    </div>
+
+    <kn-fab-button></kn-fab-button>
+  </section>
 </template>
 
 <script>
-  import knSubheader from '../components/Subheader';
+import knCard from '../components/Card';
+import knFabButton from '../components/FabButton';
 
-  export default {
-    name: 'LinksPage',
+import ApiService from '../assets/js/ApiService';
+import Event from '../assets/js/Event';
 
-    components: {
-      knSubheader,
+export default {
+  name: 'Links',
+
+  components: {
+    knCard,
+    knFabButton,
+  },
+
+  data() {
+    return {
+      linksArray: [],
+    };
+  },
+
+  mounted() {
+    this.api = new ApiService();
+    this.api.getLinks();
+
+    Event.$on('links_list', this.handleList);
+  },
+
+  beforeDestroy() {
+    Event.$off('links_list');
+  },
+
+  methods: {
+    handleList(array) {
+      this.linksArray = [];
+
+      array.forEach((item) => {
+        this.linksArray.push(item);
+      });
     },
-
-    data() {
-      return {};
-    },
-  };
+  },
+};
 </script>
 
 <style scoped></style>
