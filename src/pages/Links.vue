@@ -5,9 +5,16 @@
 
     <section class="section">
       <div class="container">
-        <div class="heading">
-          <h1 class="title">Últimos Links</h1>
-          <h2 class="subtitle">Até hoje temos {{linksArray.length}} links.</h2>
+        <div class="columns">
+          <div class="heading column">
+            <h1 class="title">Últimos Links</h1>
+
+            <h2 class="subtitle" v-if="!tagSearch">
+              Até hoje temos {{linksArray.length}} links.</h2>
+
+            <h2 class="subtitle" v-if="tagSearch">
+              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{tagSearch}}</span> que retornou {{tagSearch.length}} links.</h2>
+          </div>
         </div>
 
         <aside v-for="link in linksArray">
@@ -33,7 +40,7 @@
               v-for="tag in link.tags"
               target="_blank"
               class="tag"
-              :href="tag.url">
+              @click="handleTag(tag.name)">
 
               #{{tag.name}}
             </a>
@@ -69,6 +76,7 @@
     data() {
       return {
         linksArray: [],
+        tagSearch: null,
       };
     },
 
@@ -91,6 +99,10 @@
           this.linksArray.push(item);
         });
       },
+
+      handleTag(name) {
+        this.tagSearch = name.toLowerCase();
+      },
     },
   };
 </script>
@@ -112,5 +124,9 @@
   .tag:hover {
     background-color: #00d1b2;
     color: #FFFFFF;
+  }
+
+  .tag-search {
+    color: #00d1b2;
   }
 </style>

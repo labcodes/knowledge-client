@@ -40,26 +40,11 @@ Resources related to links in the API.
             "url": "https://developers.googleblog.com/2017/03/xla-tensorflow-compiled.html",
             "author": "Alessandro Henrique",
             "tags": [
-                {
-                    "name": "Labcodes",
-                    "url": "/api/links/?tag=labcodes"
-                },
-                {
-                    "name": "Python",
-                    "url": "/api/links/?tag=python"
-                },
-                {
-                    "name": "Django",
-                    "url": "/api/links/?tag=Django"
-                },
-                {
-                    "name": "UX",
-                    "url": "/api/links/?tag=Ux"
-                },
-                {
-                    "name": "Vue",
-                    "url": "/api/links/?tag=vue"
-                }
+                { "name": "Labcodes" },
+                { "name": "Python" },
+                { "name": "Django" },
+                { "name": "UX" },
+                { "name": "Vue" }
             ]
         },
         {
@@ -68,26 +53,11 @@ Resources related to links in the API.
             "url": "https://developers.googleblog.com/2017/03/xla-tensorflow-compiled.html",
             "author": "Renato Oliveira",
             "tags": [
-                {
-                    "name": "Labcodes",
-                    "url": "/api/links/?tag=labcodes"
-                },
-                {
-                    "name": "Python",
-                    "url": "/api/links/?tag=python"
-                },
-                {
-                    "name": "Django",
-                    "url": "/api/links/?tag=Django"
-                },
-                {
-                    "name": "UX",
-                    "url": "/api/links/?tag=Ux"
-                },
-                {
-                    "name": "Vue",
-                    "url": "/api/links/?tag=vue"
-                }
+                { "name": "Labcodes" },
+                { "name": "Python" },
+                { "name": "Django" },
+                { "name": "UX" },
+                { "name": "Vue" }
             ]
         },
         {
@@ -96,26 +66,11 @@ Resources related to links in the API.
             "url": "https://developers.googleblog.com/2017/03/xla-tensorflow-compiled.html",
             "author": "Débora Correia",
             "tags": [
-                {
-                    "name": "Labcodes",
-                    "url": "/api/links/?tag=labcodes"
-                },
-                {
-                    "name": "Python",
-                    "url": "/api/links/?tag=python"
-                },
-                {
-                    "name": "Django",
-                    "url": "/api/links/?tag=Django"
-                },
-                {
-                    "name": "UX",
-                    "url": "/api/links/?tag=Ux"
-                },
-                {
-                    "name": "Vue",
-                    "url": "/api/links/?tag=vue"
-                }
+                { "name": "Labcodes" },
+                { "name": "Python" },
+                { "name": "Django" },
+                { "name": "UX" },
+                { "name": "Vue" }
             ]
         },
         {
@@ -124,26 +79,11 @@ Resources related to links in the API.
             "url": "https://developers.googleblog.com/2017/03/xla-tensorflow-compiled.html",
             "author": "Thulio Philipe",
             "tags": [
-                {
-                    "name": "Labcodes",
-                    "url": "/api/links/?tag=labcodes"
-                },
-                {
-                    "name": "Python",
-                    "url": "/api/links/?tag=python"
-                },
-                {
-                    "name": "Django",
-                    "url": "/api/links/?tag=Django"
-                },
-                {
-                    "name": "UX",
-                    "url": "/api/links/?tag=Ux"
-                },
-                {
-                    "name": "Vue",
-                    "url": "/api/links/?tag=vue"
-                }
+                { "name": "Labcodes" },
+                { "name": "Python" },
+                { "name": "Django" },
+                { "name": "UX" },
+                { "name": "Vue" }
             ]
         }
     ]
