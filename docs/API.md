@@ -174,13 +174,13 @@ Resources related to links in the API.
 
 + Response 201
 
-## Logout [/accounts/logout/]
+## Logout [/auth/logout/]
 
 ### Logout from system [GET]
 
 + Response 200
 
-## Login [/accounts/login/]
+## Login [/auth/login/]
 
 ### Login in the system [POST]
 
