@@ -27,7 +27,6 @@
       class="nav-right nav-menu"
       :class="{ 'is-active': isActive }">
 
-        <!-- v-if="!logged" -->
       <router-link
         class="nav-item"
         title="Home"
@@ -37,6 +36,7 @@
       </router-link>
 
       <router-link
+        v-if="!logged"
         class="nav-item"
         title="Login"
         to="/login"
@@ -44,23 +44,23 @@
         Login
       </router-link>
 
-      <div v-if="logged">
-        <router-link
-          class="nav-item"
-          title="Links"
-          to="/links"
-          exact>
-          Links
-        </router-link>
+      <router-link
+        v-if="logged"
+        class="nav-item"
+        title="Links"
+        to="/links"
+        exact>
+        Links
+      </router-link>
 
-        <router-link
-          class="nav-item"
-          title="Logout"
-          to="/logout"
-          @click.native="logout">
-          Logout
-        </router-link>
-      </div>
+      <router-link
+        v-if="logged"
+        class="nav-item"
+        title="Logout"
+        to="/logout"
+        @click.native="logout">
+        Logout
+      </router-link>
     </div>
   </nav>
 </template>
