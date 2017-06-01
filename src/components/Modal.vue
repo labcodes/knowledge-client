@@ -3,42 +3,40 @@
     <div class="modal-background"></div>
 
     <div class="modal-content">
-      <div class="container">
-        <div class="heading">
-          <h1 class="title">Adicionar Links</h1>
-          <h2 class="subtitle">
-            Utilize o formulário abaixo para adicionar um link, ou utilize a nossa <strong><a href="https://github.com/labcodes/knowledge-extension">extensão para o navegador</a></strong>.
-          </h2>
-        </div>
-
-        <form @submit.prevent="addNewLink">
-          <fieldset class="field">
-            <label for="url" class="label">URL</label>
-            <input
-              id="url"
-              class="input"
-              type="url"
-              required
-              placeholder="Your URL here."
-              v-model="form.url">
-          </fieldset>
-
-          <fieldset class="field">
-            <label for="tags" class="label">Tags</label>
-            <input
-              class="input"
-              id="tags"
-              type="text"
-              required
-              placeholder="Tags here."
-              v-model="form.tags">
-          </fieldset>
-
-          <button type="submit" class="button is-primary">
-            Add link
-          </button>
-        </form>
+      <div class="heading">
+        <h1 class="title">Adicionar Links</h1>
+        <h2 class="subtitle">
+          Utilize o formulário abaixo para adicionar um link, ou utilize a nossa <strong><a target="_blank" href="https://github.com/labcodes/knowledge-extension">extensão para o navegador</a></strong>.
+        </h2>
       </div>
+
+      <form @submit.prevent="addNewLink">
+        <fieldset class="field">
+          <label for="url" class="label">URL</label>
+          <input
+            id="url"
+            class="input"
+            type="url"
+            required
+            placeholder="Your URL here."
+            v-model="form.url">
+        </fieldset>
+
+        <fieldset class="field">
+          <label for="tags" class="label">Tags</label>
+          <input
+            class="input"
+            id="tags"
+            type="text"
+            required
+            placeholder="Tags here."
+            v-model="form.tags">
+        </fieldset>
+
+        <button type="submit" class="button is-primary">
+          Add link
+        </button>
+      </form>
     </div>
 
     <button
