@@ -111,8 +111,6 @@
 
     methods: {
       handleList(array) {
-        this.linksArray = [];
-
         array.forEach((obj) => {
           const item = obj;
 
@@ -120,8 +118,47 @@
             item.tags = item.tags.split(', ');
           }
 
+          this.getAuthorImage(item);
+
           this.linksArray.push(item);
         });
+      },
+
+      getAuthorImage(item) {
+        const linkAuthor = item;
+
+        switch (linkAuthor.author) {
+          case 'thulio':
+            linkAuthor.author_image = 'https://avatars0.githubusercontent.com/u/2343288?v=3&s=460';
+            break;
+
+          case 'renato':
+            linkAuthor.author_image = 'https://avatars1.githubusercontent.com/u/613912?v=3&s=460';
+            break;
+
+          case 'fernando':
+            linkAuthor.author_image = 'https://avatars3.githubusercontent.com/u/1887601?v=3&s=460';
+            break;
+
+          case 'nicolle':
+            linkAuthor.author_image = 'https://avatars2.githubusercontent.com/u/3246075?v=3&s=460';
+            break;
+
+          case 'alessandro':
+            linkAuthor.author_image = 'https://avatars1.githubusercontent.com/u/8882260?v=3&s=460';
+            break;
+
+          case 'débora':
+            linkAuthor.author_image = 'https://avatars1.githubusercontent.com/u/5848493?v=3&s=460';
+            break;
+
+          case 'josé carlos':
+            linkAuthor.author_image = 'https://avatars2.githubusercontent.com/u/1657123?v=3&s=460';
+            break;
+
+          default:
+            break;
+        }
       },
 
       handleTag(name) {
