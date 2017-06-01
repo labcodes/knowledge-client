@@ -47,9 +47,9 @@
               v-for="tag in link.tags"
               target="_blank"
               class="tag"
-              @click="handleTag(tag.name)">
+              @click="handleTag(tag)">
 
-              #{{tag.name}}
+              #{{tag}}
             </a>
           </kn-card>
         </aside>
@@ -105,7 +105,13 @@
       handleList(array) {
         this.linksArray = [];
 
-        array.forEach((item) => {
+        array.forEach((obj) => {
+          const item = obj;
+
+          if (item.tags) {
+            item.tags = item.tags.split(', ');
+          }
+
           this.linksArray.push(item);
         });
       },
