@@ -10,8 +10,11 @@ class ApiService {
     this.event = Event;
     this.storage = new Localstorage('userInfo');
 
-    const authToken = this.storage.get().token;
-    axios.defaults.headers.common.Authorization = `Token ${authToken}`;
+
+    if (this.storage.get()) {
+      const authToken = this.storage.get().auth_token;
+      axios.defaults.headers.common.Authorization = `Token ${authToken}`;
+    }
   }
 
   getLinks() {
