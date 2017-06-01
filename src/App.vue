@@ -33,6 +33,7 @@
     },
 
     mounted() {
+      this.api = new ApiService();
       this.storage = new Localstorage('userInfo');
 
       if (this.storage.get()) {
@@ -82,7 +83,6 @@
       },
 
       handleLink(data) {
-        this.api = new ApiService();
         this.api.addLink(data);
 
         this.api.getLinks();

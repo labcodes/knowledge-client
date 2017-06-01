@@ -10,7 +10,7 @@ class ApiService {
     this.event = Event;
     this.storage = new Localstorage('userInfo');
 
-    const authToken = this.storage.get().auth_token;
+    const authToken = this.storage.get().token;
     axios.defaults.headers.common.Authorization = `Token ${authToken}`;
   }
 
@@ -37,6 +37,19 @@ class ApiService {
       })
       .catch((err) => {
         this.event.$emit('error', err);
+      });
+  }
+
+  addLink(obj) {
+    this.data = obj;
+
+    axios
+      .post(`${this.apiUrl}/links/`, this.data)
+      .then((response) => {
+        console.warn(response);
+      })
+      .catch((err) => {
+        console.info(err);
       });
   }
 }
