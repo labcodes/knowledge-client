@@ -3,15 +3,21 @@
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
-          <img src="http://dummyimage.com/128x128/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+          <slot name="card-image"></slot>
         </figure>
       </div>
 
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><slot name="card-title"></slot></strong>
-            <small><slot name="card-date"></slot></small>
+            <strong>
+              <slot name="card-title"></slot>
+            </strong>
+
+            <small>
+              <slot name="card-date"></slot>
+            </small>
+
             <br>
 
             <slot name="card-description"></slot>
@@ -117,5 +123,10 @@ export default {
 <style scoped>
   .box {
     margin: 20px auto;
+  }
+
+  .image {
+    border-radius: 5px;
+    overflow: hidden;
   }
 </style>

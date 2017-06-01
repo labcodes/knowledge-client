@@ -26,11 +26,19 @@
 
         <aside v-for="link in linksArray">
           <kn-card :card="link">
-            <h1 slot="card-title">
-              {{link.title}}
-            </h1>
+            <img
+              :src="link.author_image"
+              :alt="link.author"
+              slot="card-image">
+
+            <h1 slot="card-title">{{link.title}}</h1>
 
             <small slot="card-date">
+              <i
+                class="fa fa-clock-o"
+                aria-hidden="true">
+              </i>
+
               {{link.published_at | moment("from", "now", true)}}
             </small>
 
@@ -169,5 +177,14 @@
   .remove-filter {
     cursor: pointer;
     color: #00d1b2;
+  }
+
+  .content h1 {
+    font-size: 1.4em;
+  }
+
+  small {
+    font-size: 1.2em;
+    vertical-align: top;
   }
 </style>
