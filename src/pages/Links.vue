@@ -61,16 +61,18 @@
             </a>
           </kn-card>
         </aside>
-
-        <kn-fab-button></kn-fab-button>
       </div>
     </section>
+
+    <kn-fab-button></kn-fab-button>
+    <kn-modal :active="modalActive"></kn-modal>
   </div>
 
 </template>
 
 <script>
   // Components
+  import KnModal from '../components/Modal';
   import knCard from '../components/Card';
   import knFabButton from '../components/FabButton';
   import knSubheader from '../components/Subheader';
@@ -86,6 +88,7 @@
       knCard,
       knFabButton,
       knSubheader,
+      KnModal,
     },
 
     data() {
@@ -93,6 +96,7 @@
         linksArray: [],
         tagSearch: [],
         route: null,
+        modalActive: false,
       };
     },
 

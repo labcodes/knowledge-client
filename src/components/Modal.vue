@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="{ 'is-active': isActive }">
+  <div class="modal" :class="{ 'is-active': modalActive }">
     <div class="modal-background"></div>
 
     <div class="modal-content">
@@ -42,7 +42,7 @@
     <button
       type="button"
       class="modal-close"
-      @click.prevent="closeModal">
+      @click="closeModal">
     </button>
   </div>
 </template>
@@ -60,24 +60,27 @@ export default {
     },
   },
 
-  computed: {
-    isActive() {
-      return this.$props.active;
-    },
+  mounted() {
+    Event.$on('open_modal', this.handleModal);
+  },
+
+  beforeDestroy() {
+    Event.$off('open_modal');
   },
 
   data() {
     return {
       form: {
         url: '',
-        tags: [],
+        tags: '',
       },
+      modalActive: false,
     };
   },
 
   methods: {
     closeModal() {
-      this.active = !this.active;
+      this.modalActive = false;
       setTimeout(() => this.clearFields());
     },
 
@@ -89,6 +92,10 @@ export default {
       Event.$emit('new_link', this.form);
 
       this.closeModal();
+    },
+
+    handleModal(value) {
+      this.modalActive = value;
     },
   },
 };
@@ -122,5 +129,9 @@ export default {
 
   .heading {
     margin-bottom: 30px;
+  }
+
+  .modal {
+    z-index: 10;
   }
 </style>
