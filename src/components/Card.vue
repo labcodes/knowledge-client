@@ -137,4 +137,10 @@
   .media-right a {
     margin: 12px 0;
   }
+
+  @media only screen and (max-width: 768px) {
+    .media-content {
+      max-width: 78%;
+    }
+  }
 </style>
