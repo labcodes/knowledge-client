@@ -9,13 +9,12 @@
       <div class="container">
         <div class="columns">
           <div class="heading column">
-            <h1 class="title">Últimos Links</h1>
-
-            <h2 class="subtitle" v-if="!tagSearch">
-              Até hoje temos {{linksArray.length}} links.</h2>
+            <h1 class="title">
+              Até agora temos <span>{{allLinks.length}}</span> links
+            </h1>
 
             <h2 class="subtitle" v-if="tagSearch.length">
-              Até hoje temos {{linksArray.length}} links e existe uma busca por: <span class="tag-search">#{{route}}</span> que retornou {{tagSearch.length}} links.</h2>
+              Existe uma busca por: <span class="tag-search">#{{route}}</span> que retornou {{tagSearch.length}} links</h2>
 
               <span
                 v-if="tagSearch.length"
@@ -27,7 +26,7 @@
         </div>
 
         <div class="columns"
-          v-if="linksArray.length <= 0">
+          v-if="allLinks.length <= 0">
           <div class="column">
             <spinner
               size="big"
@@ -38,7 +37,7 @@
         </div>
 
         <div class="columns"
-          v-if="linksArray.length > 0">
+          v-if="allLinks.length > 0">
           <div class="column">
             <kn-card-filter></kn-card-filter>
           </div>
@@ -46,7 +45,7 @@
           <div class="column">
             <aside
               class="card-component"
-              v-for="link in linksArray">
+              v-for="link in allLinks">
 
               <kn-card :card="link">
                 <img
@@ -124,6 +123,7 @@
 
     data() {
       return {
+        allLinks: [],
         linksArray: [],
         tagSearch: [],
         route: null,
@@ -139,18 +139,22 @@
       this.api = new ApiService();
       this.api.getLinks();
 
+      Event.$on('filter_by', this.handleFilterBy);
       Event.$on('links_list', this.handleList);
+      Event.$on('clear_filter', this.handleClearFilter);
       Event.$on('searched_links', this.handleSearch);
     },
 
     beforeDestroy() {
+      Event.$off('filter_by');
       Event.$off('links_list');
+      Event.$off('clear_filter');
       Event.$off('searched_links');
     },
 
     methods: {
       handleList(array) {
-        this.linksArray = [];
+        this.allLinks = [];
 
         array.forEach((obj) => {
           const item = obj;
@@ -161,10 +165,12 @@
 
           this.getAuthorImage(item);
 
-          this.linksArray.push(item);
+          this.allLinks.push(item);
 
           this.$Progress.finish();
         });
+
+        this.linksArray = this.allLinks.slice(0);
       },
 
       getAuthorImage(item) {
@@ -221,6 +227,16 @@
 
       handleSearch(array) {
         this.tagSearch = array;
+      },
+
+      handleFilterBy(author) {
+        const newArray = this.linksArray.filter(post => post.author === author);
+
+        this.allLinks = newArray;
+      },
+
+      handleClearFilter() {
+        this.allLinks = this.linksArray;
       },
 
       removeFilter() {

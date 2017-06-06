@@ -10,51 +10,115 @@
       <div class="card-content">
         <ul>
           <li>
-            <input id="alessandro" type="radio" name="filter">
+            <input
+              id="alessandro"
+              type="radio"
+              value="alessandro"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="alessandro">Alessandro</label>
           </li>
 
           <li>
-            <input id="nicolle" type="radio" name="filter">
+            <input
+              id="nicolle"
+              type="radio"
+              value="nicolle"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="nicolle">Nicolle</label>
           </li>
 
           <li>
-            <input id="debora" type="radio" name="filter">
+            <input
+              id="debora"
+              type="radio"
+              value="debora"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="debora">Débora</label>
           </li>
 
           <li>
-            <input id="fernando" type="radio" name="filter">
+            <input
+              id="fernando"
+              type="radio"
+              value="fernando"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="fernando">Fernando</label>
           </li>
 
           <li>
-            <input id="renato" type="radio" name="filter">
+            <input
+              id="renato"
+              type="radio"
+              value="renato"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="renato">Renato</label>
           </li>
 
           <li>
-            <input id="jose" type="radio" name="filter">
+            <input
+              id="jose"
+              type="radio"
+              value="jose"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="jose">José</label>
           </li>
 
           <li>
-            <input id="thulio" type="radio" name="filter">
+            <input
+              id="thulio"
+              type="radio"
+              value="thulio"
+              v-model="filter"
+              @click="filterBy"
+            >
             <label for="thulio">Thulio</label>
           </li>
         </ul>
       </div>
+
+      <footer class="card-footer">
+        <a class="card-footer-item"
+          @click="removeFilterBy">
+          remove filter
+        </a>
+      </footer>
     </div>
   </div>
 </template>
 
 <script>
+import Event from '../assets/js/Event';
+
 export default {
   name: 'CardFilter',
 
   data() {
-    return {};
+    return {
+      filter: '',
+    };
+  },
+
+  methods: {
+    filterBy() {
+      Event.$emit('filter_by', this.filter);
+    },
+
+    removeFilterBy() {
+      this.filter = '';
+      Event.$emit('clear_filter');
+    },
   },
 };
 </script>
@@ -77,5 +141,9 @@ export default {
 
   .card-component h1 {
     margin-bottom: 10px;
+  }
+
+  input:checked ~ label {
+    color: #00d1b2;
   }
 </style>
