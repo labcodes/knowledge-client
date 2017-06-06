@@ -25,36 +25,32 @@
       </div>
 
       <div class="media-right">
-        <nav class="level">
-          <div class="level-right">
-            <a class="level-item btn-copy"
-              title="Copy to Clipboard"
-              @click="copyToClipboard">
+        <a class="level-item btn-copy"
+          title="Copy to Clipboard"
+          @click="copyToClipboard">
 
-              <span class="icon is-medium">
-                <i class="fa fa-copy"></i>
-              </span>
-            </a>
+          <span class="icon is-medium">
+            <i class="fa fa-copy"></i>
+          </span>
+        </a>
 
-            <a class="level-item"
-              @click="shareFacebook"
-              title="Share with Facebook">
+        <a class="level-item"
+          @click="shareFacebook"
+          title="Share with Facebook">
 
-              <span class="icon is-medium">
-                <i class="fa fa-facebook"></i>
-              </span>
-            </a>
+          <span class="icon is-medium">
+            <i class="fa fa-facebook"></i>
+          </span>
+        </a>
 
-            <a class="level-item"
-              @click="shareTwitter"
-              title="Share with Twitter">
+        <a class="level-item"
+          @click="shareTwitter"
+          title="Share with Twitter">
 
-              <span class="icon is-medium">
-                <i class="fa fa-twitter"></i>
-              </span>
-            </a>
-          </div>
-        </nav>
+          <span class="icon is-medium">
+            <i class="fa fa-twitter"></i>
+          </span>
+        </a>
       </div>
     </article>
   </div>
@@ -120,7 +116,7 @@
 
 <style scoped>
   .box {
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     border-radius: 0;
   }
 
@@ -131,5 +127,14 @@
 
   .media-content {
     word-wrap: break-word;
+    max-width: 85%;
+  }
+
+  .media-content h1 {
+    margin-bottom: 10px;
+  }
+
+  .media-right a {
+    margin: 12px 0;
   }
 </style>
