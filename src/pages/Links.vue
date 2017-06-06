@@ -133,6 +133,8 @@
 
     methods: {
       handleList(array) {
+        this.linksArray = [];
+
         array.forEach((obj) => {
           const item = obj;
 

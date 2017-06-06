@@ -47,7 +47,7 @@ class ApiService {
     this.data = obj;
 
     axios
-      .post(`${this.apiUrl}/links/`, this.data)
+      .post(`${this.apiUrl}/links/create/`, this.data)
       .then((response) => {
         this.event.$emit('link_added', response.data);
       })

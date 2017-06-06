@@ -63,6 +63,10 @@
       Event.$off('error');
     },
 
+    created() {
+      this.$Progress.start();
+    },
+
     methods: {
       handleLogin(data) {
         this.$Progress.start();
@@ -90,14 +94,10 @@
 
       handleLink(data) {
         this.api.addLink(data);
-
-        this.api.getLinks();
-
-        this.$Progress.finish();
       },
 
-      handleLinkAdded(data) {
-        console.warn(data);
+      handleLinkAdded() {
+        this.api.getLinks();
         this.$Progress.finish();
       },
 
