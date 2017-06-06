@@ -1,6 +1,8 @@
 <template>
   <div>
-    <kn-subheader title="Links" subtitle="">
+    <kn-subheader
+      title="Links"
+      subtitle="Últimos links postados.">
     </kn-subheader>
 
     <section class="section">
@@ -24,43 +26,96 @@
           </div>
         </div>
 
-        <aside v-for="link in linksArray">
-          <kn-card :card="link">
-            <img
-              :src="link.author_image"
-              :alt="link.author"
-              slot="card-image">
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Filter by author
+                </p>
+              </header>
 
-            <h1 slot="card-title">{{link.title}}</h1>
+              <div class="card-content">
+                <ul>
+                  <li>
+                    <input id="alessandro" type="radio" name="filter">
+                    <label for="alessandro">Alessandro</label>
+                  </li>
 
-            <small slot="card-date">
-              <i
-                class="fa fa-clock-o"
-                aria-hidden="true">
-              </i>
+                  <li>
+                    <input id="nicolle" type="radio" name="filter">
+                    <label for="nicolle">Nicolle</label>
+                  </li>
 
-              {{link.published_at | moment("from", "now", true)}}
-            </small>
+                  <li>
+                    <input id="debora" type="radio" name="filter">
+                    <label for="debora">Débora</label>
+                  </li>
 
-            <a
-              class="link-url"
-              :href="link.url"
-              target="_blank"
-              slot="card-description">
-              {{link.url}}
-            </a>
+                  <li>
+                    <input id="fernando" type="radio" name="filter">
+                    <label for="fernando">Fernando</label>
+                  </li>
 
-            <a
-              slot="card-tags"
-              v-for="tag in link.tags"
-              target="_blank"
-              class="tag"
-              @click="handleTag(tag)">
+                  <li>
+                    <input id="renato" type="radio" name="filter">
+                    <label for="renato">Renato</label>
+                  </li>
 
-              #{{tag}}
-            </a>
-          </kn-card>
-        </aside>
+                  <li>
+                    <input id="jose" type="radio" name="filter">
+                    <label for="jose">José</label>
+                  </li>
+
+                  <li>
+                    <input id="thulio" type="radio" name="filter">
+                    <label for="thulio">Thulio</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <aside v-for="link in linksArray">
+              <kn-card :card="link">
+                <img
+                  :src="link.author_image"
+                  :alt="link.author"
+                  slot="card-image">
+
+                <h1 slot="card-title">{{link.title}}</h1>
+
+                <small slot="card-date">
+                  <i
+                    class="fa fa-clock-o"
+                    aria-hidden="true">
+                  </i>
+
+                  {{link.published_at | moment("from", "now", true)}}
+                </small>
+
+                <a
+                  class="link-url"
+                  :href="link.url"
+                  target="_blank"
+                  slot="card-description">
+                  {{link.url}}
+                </a>
+
+                <a
+                  slot="card-tags"
+                  v-for="tag in link.tags"
+                  target="_blank"
+                  class="tag"
+                  @click="handleTag(tag)">
+
+                  #{{tag}}
+                </a>
+              </kn-card>
+            </aside>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -227,5 +282,21 @@
   small {
     font-size: 1.2em;
     vertical-align: top;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .card li {
+    list-style: none;
+    height: 40px;
+    margin-bottom: 2px;
+  }
+
+  .card input {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
   }
 </style>
