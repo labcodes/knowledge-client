@@ -106,7 +106,8 @@
   }
 
   .section {
-    min-height: 380px;
+    height: 100%;
+    min-height: 640px;
   }
 
   @import "../node_modules/bulma/bulma.sass";
