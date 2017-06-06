@@ -27,54 +27,7 @@
         </div>
 
         <div class="columns">
-          <div class="column is-one-quarter">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Filter by author
-                </p>
-              </header>
-
-              <div class="card-content">
-                <ul>
-                  <li>
-                    <input id="alessandro" type="radio" name="filter">
-                    <label for="alessandro">Alessandro</label>
-                  </li>
-
-                  <li>
-                    <input id="nicolle" type="radio" name="filter">
-                    <label for="nicolle">Nicolle</label>
-                  </li>
-
-                  <li>
-                    <input id="debora" type="radio" name="filter">
-                    <label for="debora">Débora</label>
-                  </li>
-
-                  <li>
-                    <input id="fernando" type="radio" name="filter">
-                    <label for="fernando">Fernando</label>
-                  </li>
-
-                  <li>
-                    <input id="renato" type="radio" name="filter">
-                    <label for="renato">Renato</label>
-                  </li>
-
-                  <li>
-                    <input id="jose" type="radio" name="filter">
-                    <label for="jose">José</label>
-                  </li>
-
-                  <li>
-                    <input id="thulio" type="radio" name="filter">
-                    <label for="thulio">Thulio</label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <kn-card-filter></kn-card-filter>
 
           <div class="column">
             <aside
@@ -127,7 +80,6 @@
     <kn-fab-button></kn-fab-button>
     <kn-modal :active="modalActive"></kn-modal>
   </div>
-
 </template>
 
 <script>
@@ -136,6 +88,7 @@
   import knCard from '../components/Card';
   import knFabButton from '../components/FabButton';
   import knSubheader from '../components/Subheader';
+  import knCardFilter from '../components/CardFilter';
 
   // Assets
   import ApiService from '../assets/js/ApiService';
@@ -149,6 +102,7 @@
       knFabButton,
       knSubheader,
       KnModal,
+      knCardFilter,
     },
 
     data() {
