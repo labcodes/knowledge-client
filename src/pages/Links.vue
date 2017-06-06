@@ -114,6 +114,10 @@
       };
     },
 
+    created() {
+      this.$Progress.start();
+    },
+
     mounted() {
       this.api = new ApiService();
       this.api.getLinks();
@@ -139,6 +143,8 @@
           this.getAuthorImage(item);
 
           this.linksArray.push(item);
+
+          this.$Progress.finish();
         });
       },
 

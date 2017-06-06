@@ -49,10 +49,10 @@ class ApiService {
     axios
       .post(`${this.apiUrl}/links/`, this.data)
       .then((response) => {
-        console.warn(response);
+        this.event.$emit('link_added', response.data);
       })
       .catch((err) => {
-        console.info(err);
+        this.event.$emit('error', err);
       });
   }
 }

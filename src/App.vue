@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <vue-progress-bar></vue-progress-bar>
+
     <kn-header :logged="isLogged"></kn-header>
     <router-view></router-view>
     <kn-footer></kn-footer>
@@ -46,6 +48,8 @@
       Event.$on('logout', this.handleLogout);
       Event.$on('user_logged', this.handleUserLogged);
       Event.$on('new_link', this.handleLink);
+      Event.$on('link_added', this.handleLinkAdded);
+
       Event.$on('error', this.handleError);
     },
 
@@ -54,6 +58,8 @@
       Event.$off('logout');
       Event.$off('user_logged');
       Event.$off('new_link');
+      Event.$off('link_added');
+
       Event.$off('error');
     },
 
@@ -90,7 +96,14 @@
         this.$Progress.finish();
       },
 
+      handleLinkAdded(data) {
+        console.warn(data);
+        this.$Progress.finish();
+      },
+
       handleError(data) {
+        this.$Progress.fail();
+
         const modal = new Alert(data);
         modal.error();
       },

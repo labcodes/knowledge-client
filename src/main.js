@@ -8,9 +8,15 @@ import App from './App';
 import router from './router';
 
 Vue.use(VueProgressBar, {
-  color: 'rgb(143, 255, 199)',
-  failedColor: 'red',
-  height: '2px',
+  color: '#00D1B2',
+  failedColor: '#874b4b',
+  thickness: '2px',
+  location: 'top',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300,
+  },
 });
 
 Vue.use(VueMoment);
