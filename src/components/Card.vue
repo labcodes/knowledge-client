@@ -122,7 +122,8 @@ export default {
 
 <style scoped>
   .box {
-    margin: 20px auto;
+    margin-bottom: 20px;
+    border-radius: 0;
   }
 
   .image {
