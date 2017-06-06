@@ -27,7 +27,7 @@
         </div>
 
         <div class="columns">
-          <div class="column">
+          <div class="column is-one-quarter">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -77,14 +77,16 @@
           </div>
 
           <div class="column">
-            <aside v-for="link in linksArray">
+            <aside class="card-component" v-for="link in linksArray">
               <kn-card :card="link">
                 <img
                   :src="link.author_image"
                   :alt="link.author"
                   slot="card-image">
 
-                <h1 slot="card-title">{{link.title}}</h1>
+                <h1 slot="card-title">
+                  {{link.title}}
+                </h1>
 
                 <small slot="card-date">
                   <i
@@ -282,6 +284,7 @@
   small {
     font-size: 1.2em;
     vertical-align: top;
+    color: #848484;
   }
 
   .card {
@@ -298,5 +301,9 @@
     width: 20px;
     height: 20px;
     vertical-align: middle;
+  }
+
+  .card-component h1 {
+    margin-bottom: 10px;
   }
 </style>
