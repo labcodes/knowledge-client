@@ -26,8 +26,22 @@
           </div>
         </div>
 
-        <div class="columns">
-          <kn-card-filter></kn-card-filter>
+        <div class="columns"
+          v-if="linksArray.length <= 0">
+          <div class="column">
+            <spinner
+              size="big"
+              line-fg-color="#00D1B2"
+              message="">
+            </spinner>
+          </div>
+        </div>
+
+        <div class="columns"
+          v-if="linksArray.length > 0">
+          <div class="column">
+            <kn-card-filter></kn-card-filter>
+          </div>
 
           <div class="column">
             <aside
@@ -84,6 +98,8 @@
 
 <script>
   // Components
+  import Spinner from 'vue-simple-spinner';
+
   import KnModal from '../components/Modal';
   import knCard from '../components/Card';
   import knFabButton from '../components/FabButton';
@@ -98,6 +114,7 @@
     name: 'Links',
 
     components: {
+      Spinner,
       knCard,
       knFabButton,
       knSubheader,

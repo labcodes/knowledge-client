@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
-
     <kn-header :logged="isLogged"></kn-header>
     <router-view></router-view>
     <kn-footer></kn-footer>

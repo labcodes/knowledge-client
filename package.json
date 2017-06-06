@@ -23,7 +23,8 @@
     "vue": "^2.2.2",
     "vue-moment": "^2.0.2",
     "vue-progressbar": "^0.7.2",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "vue-simple-spinner": "^1.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

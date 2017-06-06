@@ -1,5 +1,5 @@
 <template>
-  <div class="column is-one-quarter">
+  <div class="is-one-quarter">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
