@@ -249,24 +249,4 @@
     vertical-align: top;
     color: #848484;
   }
-
-  .card {
-    margin-bottom: 20px;
-  }
-
-  .card li {
-    list-style: none;
-    height: 40px;
-    margin-bottom: 2px;
-  }
-
-  .card input {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  }
-
-  .card-component h1 {
-    margin-bottom: 10px;
-  }
 </style>
