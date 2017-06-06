@@ -8,27 +8,25 @@
       </div>
 
       <div class="media-content">
-        <div class="content">
-          <p>
-            <strong>
-              <slot name="card-title"></slot>
-            </strong>
+        <p>
+          <strong>
+            <slot name="card-title"></slot>
+          </strong>
 
-            <small>
-              <slot name="card-date"></slot>
-            </small>
+          <small>
+            <slot name="card-date"></slot>
+          </small>
 
-            <br>
+          <br>
 
-            <slot name="card-description"></slot>
-            <slot name="card-tags"></slot>
-          </p>
-        </div>
+          <slot name="card-description"></slot>
+          <slot name="card-tags"></slot>
+        </p>
+      </div>
 
-        <hr />
-
-        <nav class="level is-mobile">
-          <div class="level-left">
+      <div class="media-right">
+        <nav class="level">
+          <div class="level-right">
             <a class="level-item btn-copy"
               title="Copy to Clipboard"
               @click="copyToClipboard"
@@ -129,5 +127,9 @@ export default {
   .image {
     border-radius: 5px;
     overflow: hidden;
+  }
+
+  .media-content {
+    word-wrap: break-word;
   }
 </style>
