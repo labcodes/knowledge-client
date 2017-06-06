@@ -77,7 +77,10 @@
           </div>
 
           <div class="column">
-            <aside class="card-component" v-for="link in linksArray">
+            <aside
+              class="card-component"
+              v-for="link in linksArray">
+
               <kn-card :card="link">
                 <img
                   :src="link.author_image"
