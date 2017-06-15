@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import FabButton from '@/components/FabButton';
 
 describe('FabButton.vue', () => {
@@ -13,5 +14,16 @@ describe('FabButton.vue', () => {
 
     expect(typeof ComponentData).to.equal('object');
     expect(ComponentData.modalActive).to.equal(false);
+  });
+
+  it('should change the modalActive after open the modal.', () => {
+    const ComponentData = FabButton.data();
+    const vm = new Vue(FabButton).$mount();
+
+    const modalActive = ComponentData.modalActive;
+
+    vm.openModal();
+
+    expect(modalActive).to.equal(!vm.modalActive);
   });
 });
