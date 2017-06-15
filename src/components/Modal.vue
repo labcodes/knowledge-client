@@ -1,43 +1,48 @@
 <template>
-  <div class="modal" :class="{ 'is-active': isActive }">
+  <div class="modal" :class="{ 'is-active': modalActive }">
     <div class="modal-background"></div>
 
     <div class="modal-content">
-      <div class="is-half is-offset-one-quarter">
-        <form @submit.prevent="addNewLink">
-          <fieldset class="field">
-            <label for="url" class="label">URL</label>
-            <input
-              id="url"
-              class="input"
-              type="url"
-              required
-              placeholder="Your URL here."
-              v-model="form.url">
-          </fieldset>
-
-          <fieldset class="field">
-            <label for="tags" class="label">Tags</label>
-            <input
-              class="input"
-              id="tags"
-              type="text"
-              required
-              placeholder="Tags here."
-              v-model="form.tags">
-          </fieldset>
-
-          <button type="submit" class="button is-primary">
-            Add link
-          </button>
-        </form>
+      <div class="heading">
+        <h1 class="title">Adicionar Links</h1>
+        <h2 class="subtitle">
+          Utilize o formulário abaixo para adicionar um link, ou utilize a nossa <strong><a target="_blank" href="https://github.com/labcodes/knowledge-extension">extensão para o navegador</a></strong>.
+        </h2>
       </div>
+
+      <form @submit.prevent="addNewLink">
+        <fieldset class="field">
+          <label for="url" class="label">URL</label>
+          <input
+            id="url"
+            class="input"
+            type="url"
+            required
+            placeholder="Your URL here."
+            v-model="form.url">
+        </fieldset>
+
+        <fieldset class="field">
+          <label for="tags" class="label">Tags</label>
+          <input
+            class="input"
+            id="tags"
+            type="text"
+            required
+            placeholder="Tags here."
+            v-model="form.tags">
+        </fieldset>
+
+        <button type="submit" class="button is-primary">
+          Add link
+        </button>
+      </form>
     </div>
 
     <button
       type="button"
       class="modal-close"
-      @click.prevent="closeModal">
+      @click="closeModal">
     </button>
   </div>
 </template>
@@ -55,24 +60,27 @@ export default {
     },
   },
 
-  computed: {
-    isActive() {
-      return this.$props.active;
-    },
+  mounted() {
+    Event.$on('open_modal', this.handleModal);
+  },
+
+  beforeDestroy() {
+    Event.$off('open_modal');
   },
 
   data() {
     return {
       form: {
         url: '',
-        tags: [],
+        tags: '',
       },
+      modalActive: false,
     };
   },
 
   methods: {
     closeModal() {
-      this.active = !this.active;
+      this.modalActive = false;
       setTimeout(() => this.clearFields());
     },
 
@@ -81,11 +89,13 @@ export default {
     },
 
     addNewLink() {
-      this.form.tags = this.form.tags.split(',').map(item => item.replace(' ', ''));
-
       Event.$emit('new_link', this.form);
 
       this.closeModal();
+    },
+
+    handleModal(value) {
+      this.modalActive = value;
     },
   },
 };
@@ -96,7 +106,32 @@ export default {
     border: none;
   }
 
-  label {
+  h1, h2, label {
     color: #FFFFFF;
+  }
+
+  strong {
+    color: #00d1b2;
+  }
+
+  a {
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+
+    transition: border .25s linear;
+  }
+
+  a:hover {
+    color: #00d1b2;
+    padding-bottom: 4px;
+    border-bottom-color: #00d1b2;
+  }
+
+  .heading {
+    margin-bottom: 30px;
+  }
+
+  .modal {
+    z-index: 10;
   }
 </style>

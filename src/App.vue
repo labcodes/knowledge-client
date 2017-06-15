@@ -1,13 +1,16 @@
 <template>
   <div id="app">
+    <vue-progress-bar></vue-progress-bar>
     <kn-header :logged="isLogged"></kn-header>
     <router-view></router-view>
+    <kn-footer></kn-footer>
   </div>
 </template>
 
 <script>
   // Components
   import knHeader from './components/Header';
+  import knFooter from './components/Footer';
 
   // Services
   import Localstorage from './assets/js/Localstorage';
@@ -21,6 +24,7 @@
 
     components: {
       knHeader,
+      knFooter,
     },
 
     data() {
@@ -30,6 +34,7 @@
     },
 
     mounted() {
+      this.api = new ApiService();
       this.storage = new Localstorage('userInfo');
 
       if (this.storage.get()) {
@@ -42,6 +47,8 @@
       Event.$on('logout', this.handleLogout);
       Event.$on('user_logged', this.handleUserLogged);
       Event.$on('new_link', this.handleLink);
+      Event.$on('link_added', this.handleLinkAdded);
+
       Event.$on('error', this.handleError);
     },
 
@@ -50,7 +57,13 @@
       Event.$off('logout');
       Event.$off('user_logged');
       Event.$off('new_link');
+      Event.$off('link_added');
+
       Event.$off('error');
+    },
+
+    created() {
+      this.$Progress.start();
     },
 
     methods: {
@@ -63,6 +76,9 @@
 
       handleLogout() {
         this.storage.clear();
+
+        this.$router.push('/');
+
         this.isLogged = false;
       },
 
@@ -76,15 +92,17 @@
       },
 
       handleLink(data) {
-        this.api = new ApiService();
         this.api.addLink(data);
+      },
 
+      handleLinkAdded() {
         this.api.getLinks();
-
         this.$Progress.finish();
       },
 
       handleError(data) {
+        this.$Progress.fail();
+
         const modal = new Alert(data);
         modal.error();
       },
@@ -97,6 +115,11 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .section {
+    height: 100%;
+    min-height: 640px;
   }
 
   @import "../node_modules/bulma/bulma.sass";
