@@ -2,7 +2,7 @@
   <nav class="nav has-shadow">
     <div class="nav-left">
       <a class="nav-item">
-        Knowledge
+        <img src="http://www.labcodes.com.br/static/core/imgs/logo500x216.svg" alt="Labcodes">
       </a>
     </div>
 
@@ -53,22 +53,13 @@
         Links
       </router-link>
 
-      <!-- <button
-        v-if="logged"
-        class="button is-default nav-item"
-        @click="logout">
-        Logout
-      </button> -->
-
-      <router-link
+      <a
         v-if="logged"
         class="nav-item"
         title="Logout"
-        to="/"
-        exact
-        @click.native="logout">
+        @click="logout">
         Logout
-      </router-link>
+      </a>
     </div>
   </nav>
 </template>
@@ -106,24 +97,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  %active {
-    background-color: #00D1B2;
-    border-color: transparent;
-    color: #FFFFFF;
-  }
-
   .router-link-active {
-    @extend %active;
-  }
-
-  .nav-right {
-    .nav-item {
-      transition: all, .25s, linear;
-      border-radius: 0 0 5px 5px;
-
-      &:hover {
-        @extend %active;
-      }
-    }
+    color: #00D1B2;
   }
 </style>

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <kn-modal :active="modalActive"></kn-modal>
-
     <a
       class="button is-large fab-button"
       @click="openModal"
@@ -15,24 +13,18 @@
 </template>
 
 <script>
-import KnModal from './Modal';
+import Event from '../assets/js/Event';
 
 export default {
   name: 'fab-button',
 
-  components: {
-    KnModal,
-  },
-
   data() {
-    return {
-      modalActive: false,
-    };
+    return {};
   },
 
   methods: {
     openModal() {
-      this.modalActive = !this.modalActive;
+      Event.$emit('open_modal', true);
     },
   },
 };
@@ -44,5 +36,6 @@ export default {
     bottom: 2%;
     right: 2%;
     border-radius: 100%;
+    z-index: 9;
   }
 </style>
