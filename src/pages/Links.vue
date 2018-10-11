@@ -96,7 +96,7 @@
 </template>
 
 <script>
-  // Components
+  import filter from 'lodash/filter';
   import Spinner from 'vue-simple-spinner';
 
   import KnModal from '../components/Modal';
@@ -105,7 +105,6 @@
   import knSubheader from '../components/Subheader';
   import knCardFilter from '../components/CardFilter';
 
-  // Assets
   import ApiService from '../assets/js/ApiService';
   import Event from '../assets/js/Event';
 
@@ -141,14 +140,12 @@
 
       Event.$on('filter_by', this.handleFilterBy);
       Event.$on('links_list', this.handleList);
-      Event.$on('clear_filter', this.handleClearFilter);
       Event.$on('searched_links', this.handleSearch);
     },
 
     beforeDestroy() {
       Event.$off('filter_by');
       Event.$off('links_list');
-      Event.$off('clear_filter');
       Event.$off('searched_links');
     },
 
@@ -230,13 +227,17 @@
       },
 
       handleFilterBy(author) {
-        const newArray = this.linksArray.filter(post => post.author === author);
+        if (!author) {
+          this.allLinks = this.linksArray;
+        }
 
-        this.allLinks = newArray;
-      },
+        const newArray = filter(this.linksArray, ['author', author]);
 
-      handleClearFilter() {
-        this.allLinks = this.linksArray;
+        if (newArray.length) {
+          this.allLinks = newArray;
+        } else {
+          this.allLinks = this.linksArray;
+        }
       },
 
       removeFilter() {
