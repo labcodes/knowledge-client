@@ -9,81 +9,17 @@
 
       <div class="card-content">
         <ul>
-          <li>
+          <li v-for="member in team">
             <input
-              id="alessandro"
               type="radio"
-              value="alessandro"
-              v-model="filter"
-              @click="filterBy"
+              name="members"
+              :value="member.value"
+              :id="member.value"
+              @change="filterBy"
             >
-            <label for="alessandro">Alessandro</label>
-          </li>
-
-          <li>
-            <input
-              id="nicolle"
-              type="radio"
-              value="nicolle"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="nicolle">Nicolle</label>
-          </li>
-
-          <li>
-            <input
-              id="debora"
-              type="radio"
-              value="debora"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="debora">Débora</label>
-          </li>
-
-          <li>
-            <input
-              id="fernando"
-              type="radio"
-              value="fernando"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="fernando">Fernando</label>
-          </li>
-
-          <li>
-            <input
-              id="renato"
-              type="radio"
-              value="renato"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="renato">Renato</label>
-          </li>
-
-          <li>
-            <input
-              id="jose"
-              type="radio"
-              value="jose"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="jose">José</label>
-          </li>
-
-          <li>
-            <input
-              id="thulio"
-              type="radio"
-              value="thulio"
-              v-model="filter"
-              @click="filterBy"
-            >
-            <label for="thulio">Thulio</label>
+            <label :for="member.value">
+              {{member.label}}
+            </label>
           </li>
         </ul>
       </div>
@@ -106,18 +42,31 @@ export default {
 
   data() {
     return {
-      filter: '',
+      team: [
+        { value: 'nicysneiros', label: 'Nicolle' },
+        { value: 'debscorreia', label: 'Débora' },
+        { value: 'fernandolins', label: 'Fernando' },
+        { value: 'renatooliveira', label: 'Renato' },
+        { value: 'thulioph', label: 'Thulio' },
+        { value: 'cacoze', label: 'José' },
+        { value: 'danielafalcone', label: 'Dani' },
+        { value: 'gsilva49', label: 'Nivaldo' },
+        { value: 'luanfonceca', label: 'Luan' },
+        { value: 'luizbraga', label: 'Luiz' },
+        { value: 'maribedran', label: 'Mari' },
+        { value: 'olgapinheiro', label: 'Olga' },
+      ],
     };
   },
 
   methods: {
-    filterBy() {
-      Event.$emit('filter_by', this.filter);
+    filterBy(evt) {
+      const value = evt.target.value;
+      Event.$emit('filter_by', value);
     },
 
     removeFilterBy() {
-      this.filter = '';
-      Event.$emit('clear_filter');
+      Event.$emit('filter_by', null);
     },
   },
 };
